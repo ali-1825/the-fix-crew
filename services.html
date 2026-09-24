@@ -35,6 +35,13 @@
   .section-head p{margin:0;color:var(--ink-soft);}
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .service{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 1px 2px rgba(19,32,67,.06);}
+  .service summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;}
+  .service summary::-webkit-details-marker{display:none;}
+  .service summary::after{content:'+';margin-left:auto;color:var(--blue);font-size:24px;font-weight:500;line-height:1;}
+  .service[open] summary::after{content:'−';}
+  .service[open]{border-color:#BFD2FA;box-shadow:0 12px 24px -12px rgba(47,111,237,.3);}
+  .service summary h3{flex:1;}
+  .service-content{padding-top:14px;}
   .icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;font-size:22px;}
   .blue{background:#EAF2FF;}.amber{background:#FFF1D8;}.mint{background:#E2F8F0;}
   .service h3{margin:0 0 6px;font-size:18px;}.service p{color:var(--ink-soft);font-size:14px;margin:0 0 14px;}
@@ -83,12 +90,14 @@
         <p>From quick fixes to full installations, one crew has you covered.</p>
       </div>
       <div class="services-grid">
-        <article class="service"><div class="icon blue">⚡</div><h3>Electrician</h3><p>Safe electrical work for everyday home problems.</p><ul><li>Wiring faults</li><li>Switches, sockets and fans</li><li>UPS installation and repair</li></ul></article>
-        <article class="service"><div class="icon blue">🔧</div><h3>Plumber</h3><p>Fast solutions for leaks, fittings and water flow.</p><ul><li>Leak and tap repair</li><li>Geyser and drainage work</li><li>Piping and replacement</li></ul></article>
-        <article class="service"><div class="icon amber">❄️</div><h3>AC Service</h3><p>Keep your home cool with dependable AC support.</p><ul><li>General service</li><li>Installation and repair</li><li>Gas refill</li></ul></article>
-        <article class="service"><div class="icon amber">🪚</div><h3>Carpenter</h3><p>Practical woodwork and hardware repairs at home.</p><ul><li>Doors and locks</li><li>Wardrobes and furniture</li><li>General carpentry</li></ul></article>
-        <article class="service"><div class="icon mint">🎨</div><h3>Painter</h3><p>Clean finishing for rooms, walls and furniture.</p><ul><li>Interior and exterior paint</li><li>Polish and touch-ups</li><li>Small repair preparation</li></ul></article>
-        <article class="service"><div class="icon mint">🧰</div><h3>Appliance Repair</h3><p>Help with the appliances your home relies on.</p><ul><li>Washing machines</li><li>Ovens and kitchen hoods</li><li>Inspection and repair</li></ul></article>
+        <details class="service"><summary><div class="icon blue">❄️</div><h3>AC Services</h3></summary><div class="service-content"><p>Cooling, installation and repair for home AC units.</p><ul><li>AC General Service <strong class="amount">Rs. 2,500</strong></li><li>AC Installation <strong class="amount">Rs. 3,500</strong></li><li>AC Repairing</li><li>AC Mounting &amp; Dismounting</li></ul></div></details>
+        <details class="service"><summary><div class="icon blue">⚡</div><h3>Electrician Services</h3></summary><div class="service-content"><p>Professional electrical installation, repair and wiring.</p><ul><li>UPS Installation - Without Wiring <strong class="amount">Rs. 1,800</strong></li><li>Electrical Wiring <strong class="amount">Rs. 800</strong></li><li>Ceiling Fan, Exhaust Fan &amp; Dimmer Switch Installation/Repair</li><li>SMD, Fancy Lights, &amp; Tube Light Installation</li><li>LED TV/LCD Mounting (32 se 65 inch)</li><li>Switchboard, Breaker &amp; Power Plug Replacement</li><li>Water Pump Repairing &amp; New House Wiring</li><li>Change Over Switch &amp; Distribution Box Installation</li></ul></div></details>
+        <details class="service"><summary><div class="icon blue">🔧</div><h3>Plumber Services</h3></summary><div class="service-content"><p>Complete plumbing, water fitting and leakage solutions.</p><ul><li>Muslim Shower Replacement <strong class="amount">Rs. 950</strong></li><li>Mixer Tap &amp; Single Tap Installation</li><li>Water Motor Installation &amp; Repairing</li><li>Commode, Sink &amp; Washbasin Installation</li><li>Kitchen Leakage, Pipeline Leakage &amp; Drain Blockage Repair</li><li>Water Tank Installation &amp; Automatic Switch Setup</li><li>Gas Pipe Wiring &amp; House Plumbing Work</li></ul></div></details>
+        <details class="service"><summary><div class="icon amber">🪚</div><h3>Carpenter &amp; Handyman Services</h3></summary><div class="service-content"><p>Woodwork, furniture repair and home hanging services.</p><ul><li>Room Door Lock Installation <strong class="amount">Rs. 1,500</strong></li><li>Furniture, Wardrobe &amp; Drawer Repairing</li><li>Door Installation, Door Repairing &amp; Carpenter Work</li><li>Curtain Rod, Art, Mirror, Picture &amp; Shelf Hanging</li><li>Drawer Lock &amp; Catcher Replacement</li></ul></div></details>
+        <details class="service"><summary><div class="icon mint">🧰</div><h3>Home Appliances Repair</h3></summary><div class="service-content"><p>Repair and installation for essential home appliances.</p><ul><li>Automatic Washing Machine Repairing <strong class="amount">Rs. 1,000</strong></li><li>Automatic &amp; Manual Washing Machine Installation/Service</li><li>Cooking Range &amp; Oven Services</li><li>Kitchen Hood Installation &amp; Repairing</li></ul></div></details>
+        <details class="service"><summary><div class="icon amber">♨️</div><h3>Geyser Services</h3></summary><div class="service-content"><p>Gas and electric geyser installation, service and repair.</p><ul><li>Gas Geyser Installation, Service &amp; Repair</li><li>Instant Geyser (Electric &amp; Gas) Installation, Service &amp; Repair</li><li>Instant Geyser Dismounting</li></ul></div></details>
+        <details class="service"><summary><div class="icon mint">🎨</div><h3>Painter Services</h3></summary><div class="service-content"><p>Interior, exterior and furniture finishing services.</p><ul><li>House Paint (Indoor &amp; Outdoor)</li><li>Gray Structure Paint</li><li>Furniture, Table &amp; Door Polishing</li><li>Window &amp; Wooden Door Paint</li></ul></div></details>
+        <details class="service"><summary><div class="icon mint">🧼</div><h3>Pest Control &amp; Cleaning Services</h3></summary><div class="service-content"><p>Home treatment, fumigation and disinfection services.</p><ul><li>General Fumigation</li><li>Termite, Bed Bugs &amp; Cockroach Treatment</li><li>Dengue Spray</li><li>Disinfection Services</li></ul></div></details>
       </div>
     </div>
   </section>
