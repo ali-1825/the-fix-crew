@@ -106,6 +106,16 @@
   .step h4{margin:0 0 6px;font-size:15px;font-weight:700;}
   .step p{margin:0;font-size:13.5px;color:var(--ink-soft);}
 
+  /* ABOUT */
+  .about-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:start;}
+  .about-copy h2{font-size:clamp(28px,3.4vw,38px);margin:0 0 14px;}
+  .about-copy p{color:var(--ink-soft);font-size:16px;margin:0 0 16px;max-width:64ch;}
+  .about-points{display:grid;gap:14px;margin:0;padding:0;list-style:none;}
+  .about-points li{background:#F5F8FC;border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink-soft);}
+  .about-points strong{display:block;color:var(--ink);font-family:'Manrope',sans-serif;margin-bottom:3px;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:24px;}}
+
   /* PRICING */
   .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   @media(max-width:860px){.price-grid{grid-template-columns:1fr;}}
@@ -188,6 +198,23 @@
       <a class="svc-link" href="service-detail.html?service=painter"><div class="svc"><div class="icon i-mint">🎨</div><h3>Painter</h3><p>Interior &amp; exterior paint, polish, touch-ups.</p></div></a>
       <a class="svc-link" href="service-detail.html?service=appliances"><div class="svc"><div class="icon i-mint">🧰</div><h3>Appliance Repair</h3><p>Washing machines, ovens, kitchen hoods.</p></div></a>
     </div>
+  </div>
+</section>
+
+<section id="about" class="about-band">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <div class="eyebrow-plain">ABOUT US</div>
+      <h2>Your trusted local fixing crew in Sargodha.</h2>
+      <p>Welcome to <strong>The Fix Crew</strong>, your trusted local partner right here in Sargodha for reliable, fast, and professional fixing and maintenance solutions.</p>
+      <p>We understand how stressful it can be when things break down or stop working properly. Our dedicated team of skilled professionals delivers reliable repairs, troubleshooting, and maintenance with expertise and efficiency, so the job gets done right the first time.</p>
+      <p>Our mission is simple: to make life easier for the people of Sargodha with hassle-free, transparent, and high-quality services you can depend on.</p>
+    </div>
+    <ul class="about-points">
+      <li><strong>Proudly Serving Sargodha</strong>Local experts ready to help you in your area.</li>
+      <li><strong>Reliable &amp; Skilled</strong>Dedicated professionals focused on top-quality work.</li>
+      <li><strong>Fast &amp; Efficient</strong>Quick response and turnaround times.</li>
+    </ul>
   </div>
 </section>
 
