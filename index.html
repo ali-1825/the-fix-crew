@@ -84,8 +84,9 @@
   .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
   @media(max-width:860px){.services-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:560px){.services-grid{grid-template-columns:1fr;}}
+  .svc-link{text-decoration:none;display:block;}
   .svc{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow-lo);transition:transform .25s ease, box-shadow .25s ease;transform:perspective(800px) rotateX(0deg);}
-  .svc:hover{transform:perspective(800px) rotateX(4deg) translateY(-6px);box-shadow:var(--shadow-md);}
+  .svc-link:hover .svc{transform:perspective(800px) rotateX(4deg) translateY(-6px);box-shadow:var(--shadow-md);}
   .svc .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;box-shadow:inset 0 1px 1px rgba(255,255,255,.5), 0 8px 16px -6px rgba(19,32,67,.25);}
   .svc h3{font-size:17px;font-weight:700;margin:0 0 8px;}
   .svc p{margin:0;color:var(--ink-soft);font-size:14px;}
@@ -181,12 +182,12 @@
       <p>Pick a trade, describe the job, and we match you with the nearest available technician.</p>
     </div>
     <div class="services-grid">
-      <div class="svc"><div class="icon i-blue">⚡</div><h3>Electrician</h3><p>Wiring, switches, fans, UPS install &amp; repair.</p></div>
-      <div class="svc"><div class="icon i-blue">🔧</div><h3>Plumber</h3><p>Leak fixes, taps, geysers, drainage &amp; piping.</p></div>
-      <div class="svc"><div class="icon i-amber">❄️</div><h3>AC Service</h3><p>Installation, general service, gas refill, repair.</p></div>
-      <div class="svc"><div class="icon i-amber">🪚</div><h3>Carpenter</h3><p>Doors, locks, wardrobes, furniture repair.</p></div>
-      <div class="svc"><div class="icon i-mint">🎨</div><h3>Painter</h3><p>Interior &amp; exterior paint, polish, touch-ups.</p></div>
-      <div class="svc"><div class="icon i-mint">🧰</div><h3>Appliance Repair</h3><p>Washing machines, ovens, kitchen hoods.</p></div>
+      <a class="svc-link" href="service-detail.html?service=electrician"><div class="svc"><div class="icon i-blue">⚡</div><h3>Electrician</h3><p>Wiring, switches, fans, UPS install &amp; repair.</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=plumber"><div class="svc"><div class="icon i-blue">🔧</div><h3>Plumber</h3><p>Leak fixes, taps, geysers, drainage &amp; piping.</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=ac"><div class="svc"><div class="icon i-amber">❄️</div><h3>AC Service</h3><p>Installation, general service, gas refill, repair.</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=carpenter"><div class="svc"><div class="icon i-amber">🪚</div><h3>Carpenter</h3><p>Doors, locks, wardrobes, furniture repair.</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=painter"><div class="svc"><div class="icon i-mint">🎨</div><h3>Painter</h3><p>Interior &amp; exterior paint, polish, touch-ups.</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=appliances"><div class="svc"><div class="icon i-mint">🧰</div><h3>Appliance Repair</h3><p>Washing machines, ovens, kitchen hoods.</p></div></a>
     </div>
   </div>
 </section>
