@@ -50,5 +50,6 @@ const notesLabel=document.querySelector('label[for="notes"]');notesLabel.textCon
 function populateWorkOptions(){const selected=serviceSelect.value;const options=workOptions[selected]||['General service or repair'];workSelect.replaceChildren(...options.map(option=>{const item=document.createElement('option');item.value=option;item.textContent=option;return item;}));if(options.includes(requestedJob)){workSelect.value=requestedJob;}}
 populateWorkOptions();serviceSelect.addEventListener('change',()=>{workSelect.value='';populateWorkOptions();});
 </script>
+<script>document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('a[href="about-us.html"]')){const link=document.createElement('a');link.href='about-us.html';link.textContent='About Us';nav.insertBefore(link,nav.lastElementChild);}});</script>
 </body>
 </html>

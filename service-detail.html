@@ -54,5 +54,6 @@ document.getElementById('app').innerHTML = `
 <section class="trust"><div class="wrap trust-grid"><div><div class="section-head"><h2>Why choose The Fix Crew?</h2><p>Simple booking, clear communication and technicians who respect your home.</p></div></div><ul><li>Verified and experienced technicians</li><li>Clear estimates before work starts</li><li>Fast response in our service areas</li><li>No hidden charges at the door</li><li>Support for common home service needs</li></ul></div></section>
 <section><div class="wrap"><div class="cta"><div><h2>Need ${service.eyebrow.toLowerCase()} today?</h2><p>Call The Fix Crew and get help at your door.</p></div><a class="btn btn-white" href="tel:+923000000000">Call The Fix Crew</a></div></div></section>`;
 </script>
+<script>document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('a[href="about-us.html"]')){const link=document.createElement('a');link.href='about-us.html';link.textContent='About Us';nav.insertBefore(link,nav.lastElementChild);}});</script>
 </body>
 </html>
