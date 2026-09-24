@@ -22,7 +22,7 @@
 </style>
 </head>
 <body>
-<header><div class="nav wrap"><a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>The Fix Crew</a><div class="navlinks"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">All Services</a></li><li><a href="service-detail.html?service=ac">AC Services</a></li></ul><a class="btn btn-primary" href="tel:+923000000000">Book a Fixer</a></div></div></header>
+<header><div class="nav wrap"><a class="logo" href="index.html"><span class="mark" aria-hidden="true"></span>The Fix Crew</a><div class="navlinks"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">All Services</a></li><li><a href="service-detail.html?service=ac">AC Services</a></li></ul><a class="btn btn-primary" href="book-appointment.html">Book a Fixer</a></div></div></header>
 <main id="app"></main>
 <footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha</span></div></footer>
 <script>
@@ -34,7 +34,7 @@ const jobs = {
 };
 const job=jobs[new URLSearchParams(location.search).get('job')]||jobs.installation;
 document.title=job.title+' | The Fix Crew';
-document.getElementById('app').innerHTML=`<section class="hero"><div class="wrap"><div class="eyebrow">AC SERVICES</div><h1>${job.title}</h1><p>${job.intro}</p><span class="price">${job.price}</span><div class="hero-actions" style="margin-top:24px;"><a class="btn btn-primary" href="tel:+923000000000">Book This Service</a><a class="btn btn-ghost" href="#scope">View service scope</a></div></div></section><section id="scope"><div class="wrap"><div class="columns"><article class="panel"><h2>Includes</h2><ul class="included">${job.includes.map(item=>`<li>${item}</li>`).join('')}</ul></article><article class="panel"><h2>Does not include</h2><ul class="excluded">${job.excludes.map(item=>`<li>${item}</li>`).join('')}</ul></article></div><p class="note">The listed scope covers the services above. Any additional work or material will be discussed and quoted separately before it starts.</p><div class="cta"><div><h2>Ready to book?</h2><p>Call The Fix Crew for a clear quote and a technician at your door.</p></div><a class="btn btn-white" href="tel:+923000000000">Call The Fix Crew</a></div></div></section>`;
+document.getElementById('app').innerHTML=`<section class="hero"><div class="wrap"><div class="eyebrow">AC SERVICES</div><h1>${job.title}</h1><p>${job.intro}</p><span class="price">${job.price}</span><div class="hero-actions" style="margin-top:24px;"><a class="btn btn-primary" href="book-appointment.html?service=${encodeURIComponent(job.title)}">Book This Service</a><a class="btn btn-ghost" href="#scope">View service scope</a></div></div></section><section id="scope"><div class="wrap"><div class="columns"><article class="panel"><h2>Includes</h2><ul class="included">${job.includes.map(item=>`<li>${item}</li>`).join('')}</ul></article><article class="panel"><h2>Does not include</h2><ul class="excluded">${job.excludes.map(item=>`<li>${item}</li>`).join('')}</ul></article></div><p class="note">The listed scope covers the services above. Any additional work or material will be discussed and quoted separately before it starts.</p><div class="cta"><div><h2>Ready to book?</h2><p>Call The Fix Crew for a clear quote and a technician at your door.</p></div><a class="btn btn-white" href="book-appointment.html?service=${encodeURIComponent(job.title)}">Call The Fix Crew</a></div></div></section>`;
 </script>
 </body>
 </html>
