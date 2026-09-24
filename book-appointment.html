@@ -30,25 +30,25 @@ const serviceOptions=['Electrician','Plumber','AC Services','Carpenter & Handyma
 const serviceSelect=document.createElement('select');
 serviceSelect.id='service';serviceSelect.name='service';serviceSelect.required=true;
 serviceOptions.forEach(option=>{const item=document.createElement('option');item.value=option;item.textContent=option;serviceSelect.appendChild(item);});
-if(service && !serviceOptions.includes(service)){const item=document.createElement('option');item.value=service;item.textContent=service;serviceSelect.insertBefore(item,serviceSelect.firstChild);}
-serviceSelect.value=serviceOptions.includes(service)?service:serviceSelect.options[0].value;
 document.getElementById('service').replaceWith(serviceSelect);
 const workOptions={
-  Electrician:['UPS installation','Electrical wiring','Switchboard, breaker or power plug','Ceiling fan, exhaust fan or dimmer switch','SMD, fancy light or tube light','LED TV mounting','Water pump repair or new house wiring','Change-over switch or distribution box'],
-  Plumber:['Muslim shower replacement','Mixer tap or single tap installation','Water motor installation or repair','Commode, sink or washbasin','Leakage or drain blockage repair','Water tank or automatic switch','Gas pipe wiring or house plumbing'],
-  'AC Services':['AC general service','AC installation','AC repairing','AC mounting and dismounting','AC dismounting'],
-  'Carpenter & Handyman':['Room door lock installation','Furniture, wardrobe or drawer repair','Door installation or repair','Curtain rod, art, mirror or shelf hanging','Drawer lock or catcher replacement'],
-  'Home Appliances Repair':['Automatic washing machine repair','Washing machine installation or service','Cooking range or oven service','Kitchen hood installation or repair'],
-  'Geyser Services':['Gas geyser installation, service or repair','Instant geyser installation or repair','Instant geyser dismounting'],
-  'Painter Services':['Interior painting','Exterior painting','Furniture polishing','Touch-up or wall repair']
+  Electrician:['UPS Installation - Without Wiring','Electrical Wiring','Ceiling Fan, Exhaust Fan & Dimmer Switch','SMD, Fancy Lights & Tube Lights','LED TV/LCD Mounting','Switchboard, Breaker & Power Plug','Water Pump Repair & New House Wiring','Change Over Switch & Distribution Box'],
+  Plumber:['Muslim Shower Replacement','Mixer Tap & Single Tap Installation','Water Motor Installation & Repair','Commode, Sink & Washbasin','Leakage & Drain Blockage Repair','Water Tank & Automatic Switch','Gas Pipe Wiring & House Plumbing'],
+  'AC Services':['AC General Service','AC Installation','AC Repairing','AC Mounting & Dismounting','AC Dismounting'],
+  'Carpenter & Handyman':['Room Door Lock Installation','Furniture, Wardrobe & Drawer Repair','Door Installation & Repair','Curtain Rod, Art, Mirror & Shelf Hanging','Drawer Lock & Catcher Replacement'],
+  'Home Appliances Repair':['Automatic Washing Machine Repair','Washing Machine Installation/Service','Cooking Range & Oven Services','Kitchen Hood Installation & Repair'],
+  'Geyser Services':['Gas Geyser Installation, Service & Repair','Instant Geyser Installation & Repair','Instant Geyser Dismounting'],
+  'Painter Services':['House Paint','Gray Structure Paint','Furniture, Table & Door Polishing','Window & Wooden Door Paint']
 };
+const requestedJob=service;const matchingCategory=Object.entries(workOptions).find(([,jobs])=>jobs.includes(requestedJob));
+serviceSelect.value=matchingCategory?matchingCategory[0]:(serviceOptions.includes(service)?service:serviceOptions[0]);
 const workField=document.createElement('div');workField.className='field full';
 const workLabel=document.createElement('label');workLabel.htmlFor='job';workLabel.textContent='What work do you need?';
 const workSelect=document.createElement('select');workSelect.id='job';workSelect.name='job';workSelect.required=true;
 workField.append(workLabel,workSelect);document.getElementById('notes').closest('.field').before(workField);
 const notesLabel=document.querySelector('label[for="notes"]');notesLabel.textContent='Additional details (optional)';document.getElementById('notes').required=false;
-function populateWorkOptions(){const selected=serviceSelect.value;const key=Object.keys(workOptions).find(option=>selected.toLowerCase().includes(option.toLowerCase().split(' ')[0]));const options=workOptions[key]||['General service or repair'];workSelect.replaceChildren(...options.map(option=>{const item=document.createElement('option');item.value=option;item.textContent=option;return item;}));}
-populateWorkOptions();serviceSelect.addEventListener('change',populateWorkOptions);
+function populateWorkOptions(){const selected=serviceSelect.value;const options=workOptions[selected]||['General service or repair'];workSelect.replaceChildren(...options.map(option=>{const item=document.createElement('option');item.value=option;item.textContent=option;return item;}));if(options.includes(requestedJob)){workSelect.value=requestedJob;}}
+populateWorkOptions();serviceSelect.addEventListener('change',()=>{workSelect.value='';populateWorkOptions();});
 </script>
 </body>
 </html>
