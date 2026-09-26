@@ -127,53 +127,64 @@
 
   @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}.svc,.btn-primary{transition:none;}}
 
-  /* Five-second steel gate welcome animation */
+  /* Simple realistic steel gate intro animation */
   body.gate-intro-active{overflow:hidden;}
-  #steel-gate-intro{position:fixed;inset:0;z-index:9999;display:flex;overflow:hidden;background:#111820;color:#e8edf2;}
-  #steel-gate-intro.is-finished{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .25s ease,visibility .25s ease;}
-  .gate-door{position:relative;width:50%;height:100%;overflow:hidden;background:repeating-linear-gradient(90deg,rgba(255,255,255,.035) 0 2px,transparent 2px 8px),linear-gradient(135deg,#59636d 0%,#222930 26%,#424b54 51%,#171c21 78%,#3a424a 100%);box-shadow:inset 0 0 90px rgba(0,0,0,.72);}
-  .gate-door-left{border-right:3px solid #111820;animation:gate-open-left 1.3s cubic-bezier(.77,0,.175,1) 3.5s both;}
-  .gate-door-right{border-left:3px solid #111820;animation:gate-open-right 1.3s cubic-bezier(.77,0,.175,1) 3.5s both;}
-  .gate-door::before,.gate-door::after{content:"";position:absolute;left:7%;right:7%;height:15px;border:1px solid rgba(220,230,238,.2);background:linear-gradient(#606b75,#252c32 55%,#11161a);box-shadow:0 8px 18px #080b0e;}
-  .gate-door::before{top:14%;}.gate-door::after{bottom:14%;}
-  .gate-brace{position:absolute;inset:27% 10%;border:2px solid rgba(179,192,203,.26);background:linear-gradient(135deg,transparent 49.5%,rgba(179,192,203,.22) 50%,transparent 50.7%),linear-gradient(45deg,transparent 49.5%,rgba(179,192,203,.14) 50%,transparent 50.7%);}
-  .gate-stamp{position:absolute;left:0;right:0;top:46%;text-align:center;color:rgba(226,234,240,.28);font:700 clamp(12px,2vw,22px)/1.4 'Manrope',sans-serif;letter-spacing:.12em;}
-  .gate-rivets{position:absolute;left:4%;right:4%;top:7%;height:18px;background:radial-gradient(circle,#aeb9c2 0 2px,#252d34 3px 5px,transparent 6px) 0 0/28px 18px;opacity:.8;}
-  .gate-lock{position:absolute;z-index:2;left:50%;top:50%;width:clamp(82px,12vw,132px);height:min(72vh,510px);transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:space-around;padding:18px 0;border:2px solid #68737e;border-radius:9px;background:linear-gradient(90deg,#171c20,#64707b 48%,#20262c);box-shadow:0 0 55px #080b0ed9,inset 0 0 20px #111820;animation:lock-release .5s ease-in-out 3.2s both;}
-  .gate-lock-label{font:700 9px/1.3 monospace;letter-spacing:.12em;color:#f6c05a;text-align:center;}
-  .gate-lock-status{font:700 10px monospace;letter-spacing:.1em;color:#ff7373;animation:status-unlock .3s linear 3.25s forwards;}
-  .gate-socket{position:absolute;width:clamp(52px,7vw,68px);height:clamp(52px,7vw,68px);border:2px dashed #73808a;border-radius:50%;background:radial-gradient(circle,#080b0d 0 34%,#343d45 36% 63%,#080b0d 66%);}
-  .gate-nut{position:absolute;z-index:3;width:clamp(54px,7vw,72px);height:clamp(54px,7vw,72px);filter:drop-shadow(0 8px 8px #080b0e);}
-  .gate-nut svg{width:100%;height:100%;}
-  .gate-nut-1{top:24%;animation:nut-release 3.2s cubic-bezier(.25,1,.5,1) both;}
-  .gate-nut-2{top:calc(50% - 32px);animation:nut-release 3.2s cubic-bezier(.25,1,.5,1) .15s both;}
-  .gate-nut-3{bottom:24%;animation:nut-release 3.2s cubic-bezier(.25,1,.5,1) .3s both;}
-  .gate-socket-1{top:24%;}.gate-socket-2{top:calc(50% - 26px);}.gate-socket-3{bottom:24%;}
-  .gate-skip{position:absolute;z-index:5;top:18px;right:18px;border:1px solid #9aa7b2;border-radius:4px;background:rgba(15,21,27,.82);color:#fff;padding:10px 14px;font:600 13px 'Inter',sans-serif;cursor:pointer;}
-  .gate-skip:hover{background:#303a43;}
-  @keyframes nut-release{0%{opacity:0;transform:translateX(58vw) rotate(540deg)}28%{opacity:1;transform:translateX(0) rotate(0)}45%{opacity:1;transform:translateX(0) rotate(0)}58%{transform:translate(0,0) rotate(-360deg)}78%{opacity:1;transform:translate(20px,16px) rotate(-900deg)}100%{opacity:0;transform:translate(48px,110vh) rotate(-1440deg)}}
+  #steel-gate-intro{position:fixed;inset:0;z-index:9999;display:flex;overflow:hidden;background:#0d1115;}
+  #steel-gate-intro.is-finished{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility .28s ease;}
+  .gate-door{position:relative;width:50%;height:100%;background:linear-gradient(180deg,#646d76 0%,#2d353b 30%,#171d22 100%);box-shadow:inset 0 0 18px rgba(0,0,0,.5);}
+  .gate-door-left{animation:gate-open-left 1.1s cubic-bezier(.78,0,.18,1) 2.9s forwards;}
+  .gate-door-right{animation:gate-open-right 1.1s cubic-bezier(.78,0,.18,1) 2.9s forwards;}
+  .gate-door::before{content:"";position:absolute;left:4%;right:4%;top:10%;bottom:10%;border-left:2px solid rgba(255,255,255,.08);border-right:2px solid rgba(0,0,0,.35);background:linear-gradient(90deg,rgba(255,255,255,.03),rgba(0,0,0,.24));}
+  .gate-door::after{content:"";position:absolute;left:46%;top:8%;bottom:8%;width:2px;background:rgba(255,255,255,.12);}
+  .gate-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:min(64vh,420px);background:linear-gradient(180deg,#242b31,#0f1418);border:2px solid rgba(188,196,204,.2);border-radius:10px;box-shadow:0 0 18px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:flex-start;flex-direction:column;padding:18px 0;}
+  .gate-center::before{content:"";position:absolute;left:50%;top:8%;bottom:8%;width:2px;background:rgba(255,255,255,.08);transform:translateX(-50%);}
+  .gate-nut{position:absolute;left:50%;width:22px;height:22px;transform:translateX(-50%);clip-path:polygon(50% 0%, 92% 25%, 92% 75%, 50% 100%, 8% 75%, 8% 25%);background:linear-gradient(135deg,#dfe8ee,#61727f 38%,#2b3339);border:2px solid rgba(223,232,238,.8);box-shadow:inset 0 0 0 2px rgba(12,16,20,.7),0 0 12px rgba(0,0,0,.18);}
+  .gate-nut::before{content:"";position:absolute;inset:7px;border-radius:50%;background:#101518;border:2px solid rgba(197,210,219,.58);}
+  .gate-nut-1{top:16%;animation:nut-loose-1 3.1s cubic-bezier(.2,1,.5,1) both;}
+  .gate-nut-2{top:46%;animation:nut-loose-2 3.1s cubic-bezier(.2,1,.5,1) .14s both;}
+  .gate-nut-3{bottom:16%;animation:nut-loose-3 3.1s cubic-bezier(.2,1,.5,1) .28s both;}
+  .gate-wrench{position:absolute;right:-24%;top:50%;width:220px;height:120px;transform:translateY(-50%) rotate(24deg);opacity:0;animation:wrench-approach 3.1s ease-in-out both;}
+  .gate-wrench svg{display:block;width:100%;height:100%;filter:drop-shadow(0 10px 16px rgba(0,0,0,.35));}
   @keyframes gate-open-left{to{transform:translateX(-100%)}}
   @keyframes gate-open-right{to{transform:translateX(100%)}}
-  @keyframes lock-release{50%{transform:translate(-50%,-50%) scaleX(.94)}100%{transform:translate(-50%,-50%) scaleY(.94);opacity:.85}}
-  @keyframes status-unlock{to{color:#55dfa9}}
-  @media(max-width:600px){.gate-door::before,.gate-door::after{left:5%;right:5%;}.gate-brace{inset:31% 8%;}.gate-stamp{font-size:10px;letter-spacing:.04em}.gate-lock{height:min(62vh,420px)}.gate-nut-1{top:29%}.gate-nut-3{bottom:29%}.gate-socket-1{top:29%}.gate-socket-3{bottom:29%}.gate-skip{top:12px;right:12px;padding:8px 10px;font-size:12px}}
+  @keyframes wrench-approach{0%{opacity:0;transform:translate(180px,-50%) rotate(30deg) scale(.85)}18%{opacity:1}30%{transform:translate(-10px,-50%) rotate(0deg) scale(.96)}46%{transform:translate(-60px,-52%) rotate(-18deg) scale(1)}68%{transform:translate(-110px,-50%) rotate(-26deg) scale(.96)}100%{opacity:0;transform:translate(-200px,-45%) rotate(-28deg) scale(.8)}}
+  @keyframes nut-loose-1{0%{opacity:0;transform:translateX(70vw) rotate(420deg) scale(1.3)}18%{opacity:1;transform:translateX(-50%) rotate(0) scale(1)}42%{transform:translateX(-50%) rotate(-90deg) scale(1.05)}62%{transform:translateX(-50%) rotate(-240deg) scale(1.08)}78%{opacity:1;transform:translate(18px,-18px) rotate(-540deg) scale(1)}100%{opacity:0;transform:translate(44px,-120px) rotate(-720deg) scale(.75)}}
+  @keyframes nut-loose-2{0%{opacity:0;transform:translateX(70vw) rotate(420deg) scale(1.3)}18%{opacity:1;transform:translateX(-50%) rotate(0) scale(1)}42%{transform:translateX(-50%) rotate(-90deg) scale(1.05)}62%{transform:translateX(-50%) rotate(-240deg) scale(1.08)}78%{opacity:1;transform:translate(18px,0) rotate(-540deg) scale(1)}100%{opacity:0;transform:translate(44px,120px) rotate(-720deg) scale(.75)}}
+  @keyframes nut-loose-3{0%{opacity:0;transform:translateX(70vw) rotate(420deg) scale(1.3)}18%{opacity:1;transform:translateX(-50%) rotate(0) scale(1)}42%{transform:translateX(-50%) rotate(-90deg) scale(1.05)}62%{transform:translateX(-50%) rotate(-240deg) scale(1.08)}78%{opacity:1;transform:translate(18px,18px) rotate(-540deg) scale(1)}100%{opacity:0;transform:translate(44px,200px) rotate(-720deg) scale(.75)}}
+  @media(max-width:700px){.gate-center{width:74px;height:min(52vh,340px)}.gate-wrench{width:160px;height:90px;right:-30%}.gate-nut{width:18px;height:18px}}
 </style>
 </head>
 <body class="gate-intro-active">
 
-<div id="steel-gate-intro" role="presentation" aria-label="Steel gate opening animation">
-  <div class="gate-door gate-door-left"><div class="gate-rivets"></div><div class="gate-brace"></div><div class="gate-stamp">THE FIX CREW<br>SECURE ACCESS</div></div>
-  <div class="gate-door gate-door-right"><div class="gate-rivets"></div><div class="gate-brace"></div><div class="gate-stamp">WELCOME<br>SARGODHA</div></div>
-  <div class="gate-lock" aria-hidden="true">
-    <span class="gate-lock-status">LOCKED</span>
-    <span class="gate-lock-label">TRIPLE SECURE</span>
-    <i class="gate-socket gate-socket-1"></i><i class="gate-socket gate-socket-2"></i><i class="gate-socket gate-socket-3"></i>
-    <span class="gate-nut gate-nut-1"><svg viewBox="0 0 100 100"><defs><linearGradient id="gateSteelA" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1dce5"/><stop offset=".5" stop-color="#46525d"/><stop offset="1" stop-color="#a6b4c0"/></linearGradient></defs><polygon points="50,5 90,26 90,74 50,95 10,74 10,26" fill="url(#gateSteelA)" stroke="#d2dce4" stroke-width="4"/><circle cx="50" cy="50" r="21" fill="#101418" stroke="#83909b" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#050708"/></svg></span>
-    <span class="gate-nut gate-nut-2"><svg viewBox="0 0 100 100"><polygon points="50,5 90,26 90,74 50,95 10,74 10,26" fill="url(#gateSteelA)" stroke="#d2dce4" stroke-width="4"/><circle cx="50" cy="50" r="21" fill="#101418" stroke="#83909b" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#050708"/></svg></span>
-    <span class="gate-nut gate-nut-3"><svg viewBox="0 0 100 100"><polygon points="50,5 90,26 90,74 50,95 10,74 10,26" fill="url(#gateSteelA)" stroke="#d2dce4" stroke-width="4"/><circle cx="50" cy="50" r="21" fill="#101418" stroke="#83909b" stroke-width="4"/><circle cx="50" cy="50" r="10" fill="#050708"/></svg></span>
-    <span class="gate-lock-label">AUTO-UNLOCK</span>
+<div id="steel-gate-intro" role="presentation" aria-label="Simple steel gate opening animation">
+  <div class="gate-door gate-door-left"></div>
+  <div class="gate-door gate-door-right"></div>
+  <div class="gate-center" aria-hidden="true">
+    <span class="gate-nut gate-nut-1"></span>
+    <span class="gate-nut gate-nut-2"></span>
+    <span class="gate-nut gate-nut-3"></span>
   </div>
-  <button class="gate-skip" id="gate-intro-skip" type="button">Skip intro</button>
+  <div class="gate-wrench" aria-hidden="true">
+    <svg viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="wrenchSteel" x1="0%" x2="100%" y1="0%" y2="0%">
+          <stop offset="0%" stop-color="#dfe9f1"/>
+          <stop offset="25%" stop-color="#98a6af"/>
+          <stop offset="50%" stop-color="#4c5760"/>
+          <stop offset="100%" stop-color="#d8e1e8"/>
+        </linearGradient>
+      </defs>
+      <path d="M20 58 L44 58 L88 24 L172 24 C198 24 216 42 216 68 C216 94 198 112 172 112 L80 112 L56 90 L20 90 Z" fill="url(#wrenchSteel)"/>
+      <path d="M88 24 L98 14 L130 14 L120 24 Z" fill="#c8d0d8"/>
+      <path d="M70 108 L120 108 L138 132 L90 132 Z" fill="#4b5560"/>
+      <path d="M146 16 L160 22 L170 46 L154 52 L146 16 Z" fill="#dfe9f1"/>
+      <path d="M170 46 L212 52 L234 72 L188 78 L170 46 Z" fill="#afb8bf"/>
+      <path d="M218 78 L246 78 L258 94 L234 96 Z" fill="#dfe9f1"/>
+      <path d="M57 73 L78 93" stroke="#6b7280" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="70" cy="80" r="15" fill="#2a2f35" stroke="#d5dfe8" stroke-width="4"/>
+      <circle cx="70" cy="80" r="5" fill="#dfe9f1"/>
+    </svg>
+  </div>
 </div>
 
 <script>
@@ -183,8 +194,7 @@
     gateIntro.classList.add('is-finished');
     document.body.classList.remove('gate-intro-active');
   };
-  document.getElementById('gate-intro-skip').addEventListener('click', finishGateIntro);
-  window.setTimeout(finishGateIntro, 5000);
+  window.setTimeout(finishGateIntro, 4200);
 </script>
 
 <header>

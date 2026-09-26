@@ -4,13 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Steel Gate Intro Animation | 5-Second Preloader</title>
-  <!-- Tailwind CSS CDN for modern responsive styling -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter aur Orbitron industrial typography ke liye -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --steel-dark: #1e2227;
@@ -30,36 +23,8 @@
       color: #f3f4f6;
     }
 
-    .steel-panel {
-      background: 
-        repeating-linear-gradient(90deg, 
-          rgba(255, 255, 255, 0.03) 0px, 
-          rgba(255, 255, 255, 0.03) 2px, 
-          transparent 2px, 
-          transparent 6px),
-        linear-gradient(135deg, 
-          #2c3239 0%, 
-          #1f2429 25%, 
-          #464f59 50%, 
-          #1a1e22 75%, 
-          #363e46 100%);
-      box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.85);
-      position: relative;
-    }
-
-    /* Rivet / Nut bolt borders on the steel gate */
-    .rivet-border {
-      background-image: radial-gradient(circle, #8a9ba8 2px, #1a1e22 3px, transparent 4px);
-      background-size: 24px 24px;
-    }
-
-    /* Heavy industrial cross beams */
-    .steel-beam {
-      background: linear-gradient(180deg, #4d5761 0%, #20252b 50%, #15181b 100%);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-    }
-
-    /* Gate Overlay Wrapper */
+    /* Simple realistic steel gate intro animation */
+    body.gate-intro-active{overflow:hidden;}
     #gate-overlay {
       position: fixed;
       inset: 0;
@@ -68,393 +33,193 @@
       width: 100vw;
       height: 100vh;
       overflow: hidden;
+      background: #0d1115;
       pointer-events: all;
     }
-
-    /* Jab animation complete ho jaye gi to overlay hide ho jayega */
     #gate-overlay.finished {
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.5s ease-out;
+      transition: opacity .28s ease-out;
     }
-
-    /* 
-      TIMELINE BREAKDOWN (Total: 5.0 Seconds):
-      0.0s - 1.2s: 3 Nuts right side se tezi se aate hain aur center plate par fix hote hain
-      1.5s - 3.2s: Nuts counter-clockwise unscrew hote hain, vibrate karte hain aur girte hain
-      3.4s - 3.5s: Status light Red se Green hoti hai aur lock slide open hota hai
-      3.5s - 4.8s: Steel gate ke dono darwaze Left aur Right slide ho jate hain
-      5.0s: Pura overlay gaib ho jata hai
-    */
-
-    /* Left Door Animation */
+    .door-left,
+    .door-right {
+      position: relative;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(180deg,#646d76 0%,#2d353b 30%,#171d22 100%);
+      box-shadow: inset 0 0 18px rgba(0,0,0,.5);
+    }
+    .door-left::before,
+    .door-right::before {
+      content: "";
+      position: absolute;
+      inset: 8% 4%;
+      border-left: 2px solid rgba(255,255,255,.08);
+      border-right: 2px solid rgba(0,0,0,.35);
+      background: linear-gradient(90deg,rgba(255,255,255,.03),rgba(0,0,0,.24));
+    }
+    .door-left::after,
+    .door-right::after {
+      content: "";
+      position: absolute;
+      left: 46%;
+      top: 8%;
+      bottom: 8%;
+      width: 2px;
+      background: rgba(255,255,255,.12);
+    }
     .gate-animating .door-left {
-      animation: openLeftDoor 1.3s cubic-bezier(0.77, 0, 0.175, 1) 3.5s forwards;
+      animation: openLeftDoor 1.1s cubic-bezier(.78,0,.18,1) 2.9s forwards;
     }
-    @keyframes openLeftDoor {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
-
-    /* Right Door Animation */
     .gate-animating .door-right {
-      animation: openRightDoor 1.3s cubic-bezier(0.77, 0, 0.175, 1) 3.5s forwards;
+      animation: openRightDoor 1.1s cubic-bezier(.78,0,.18,1) 2.9s forwards;
     }
-    @keyframes openRightDoor {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(100%); }
-    }
+    @keyframes openLeftDoor { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+    @keyframes openRightDoor { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
 
-    /* NUT 1 (Top) */
-    .gate-animating .nut-item-1 {
-      animation: nutSequence1 3.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    .center-lock-bar {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 96px;
+      height: min(64vh,420px);
+      background: linear-gradient(180deg,#242b31,#0f1418);
+      border: 2px solid rgba(188,196,204,.2);
+      border-radius: 10px;
+      box-shadow: 0 0 18px rgba(0,0,0,.35);
     }
-    /* NUT 2 (Middle - slight delay) */
-    .gate-animating .nut-item-2 {
-      animation: nutSequence2 3.2s cubic-bezier(0.25, 1, 0.5, 1) 0.15s forwards;
+    .center-lock-bar::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 8%;
+      bottom: 8%;
+      width: 2px;
+      background: rgba(255,255,255,.08);
+      transform: translateX(-50%);
     }
-    /* NUT 3 (Bottom - slight delay) */
-    .gate-animating .nut-item-3 {
-      animation: nutSequence3 3.2s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+    .gate-nut {
+      position: absolute;
+      left: 50%;
+      width: 22px;
+      height: 22px;
+      transform: translateX(-50%);
+      clip-path: polygon(50% 0%, 92% 25%, 92% 75%, 50% 100%, 8% 75%, 8% 25%);
+      background: linear-gradient(135deg,#dfe8ee,#61727f 38%,#2b3339);
+      border: 2px solid rgba(223,232,238,.8);
+      box-shadow: inset 0 0 0 2px rgba(12,16,20,.7), 0 0 12px rgba(0,0,0,.18);
     }
-
-    /* Keyframes: Right side se aana -> Lock par hit hona -> Unscrew hona -> Gir jana */
-    @keyframes nutSequence1 {
-      0% {
-        opacity: 0;
-        transform: translate(110vw, -80px) rotate(420deg) scale(1.4);
-      }
-      28% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      45% {
-        /* Nut locked and ready */
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      50% {
-        /* Unscrewing start: vibrate & rotate CCW */
-        transform: translate(-3px, 2px) rotate(-180deg) scale(1.08);
-      }
-      70% {
-        /* Loosened out of thread */
-        transform: translate(10px, -5px) rotate(-720deg) scale(1.2);
-      }
-      82% {
-        /* Complete unscrew detachment */
-        opacity: 1;
-        transform: translate(35px, 30px) rotate(-1080deg) scale(1.15);
-      }
-      100% {
-        /* Gravity drop downward off the screen */
-        opacity: 0;
-        transform: translate(60px, 120vh) rotate(-1440deg) scale(0.8);
-      }
+    .gate-nut::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 50%;
+      background: #101518;
+      border: 2px solid rgba(197,210,219,.58);
     }
-
-    @keyframes nutSequence2 {
-      0% {
-        opacity: 0;
-        transform: translate(110vw, 0px) rotate(360deg) scale(1.4);
-      }
-      28% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      45% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      50% {
-        transform: translate(2px, -2px) rotate(-180deg) scale(1.08);
-      }
-      70% {
-        transform: translate(15px, 0px) rotate(-720deg) scale(1.2);
-      }
-      82% {
-        opacity: 1;
-        transform: translate(45px, 40px) rotate(-1080deg) scale(1.15);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(80px, 120vh) rotate(-1440deg) scale(0.8);
-      }
+    .gate-nut-1 { top: 16%; animation: nutLoose1 3.1s cubic-bezier(.2,1,.5,1) both; }
+    .gate-nut-2 { top: 46%; animation: nutLoose2 3.1s cubic-bezier(.2,1,.5,1) .14s both; }
+    .gate-nut-3 { bottom: 16%; animation: nutLoose3 3.1s cubic-bezier(.2,1,.5,1) .28s both; }
+    .gate-wrench {
+      position: absolute;
+      right: -24%;
+      top: 50%;
+      width: 220px;
+      height: 120px;
+      transform: translateY(-50%) rotate(24deg);
+      opacity: 0;
+      animation: wrenchApproach 3.1s ease-in-out both;
     }
-
-    @keyframes nutSequence3 {
-      0% {
-        opacity: 0;
-        transform: translate(110vw, 80px) rotate(300deg) scale(1.4);
-      }
-      28% {
-        opacity: 1;
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      45% {
-        transform: translate(0, 0) rotate(0deg) scale(1);
-      }
-      50% {
-        transform: translate(-2px, 3px) rotate(-180deg) scale(1.08);
-      }
-      70% {
-        transform: translate(12px, 10px) rotate(-720deg) scale(1.2);
-      }
-      82% {
-        opacity: 1;
-        transform: translate(40px, 50px) rotate(-1080deg) scale(1.15);
-      }
-      100% {
-        opacity: 0;
-        transform: translate(70px, 120vh) rotate(-1440deg) scale(0.8);
-      }
+    .gate-wrench svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 10px 16px rgba(0,0,0,.35));
     }
-
-    /* Lock bar unlocking reaction */
-    .gate-animating .center-lock-bar {
-      animation: unlockBar 0.5s ease-in-out 3.2s forwards;
+    @keyframes wrenchApproach {
+      0% { opacity: 0; transform: translate(180px,-50%) rotate(30deg) scale(.85); }
+      18% { opacity: 1; }
+      30% { transform: translate(-10px,-50%) rotate(0deg) scale(.96); }
+      46% { transform: translate(-60px,-52%) rotate(-18deg) scale(1); }
+      68% { transform: translate(-110px,-50%) rotate(-26deg) scale(.96); }
+      100% { opacity: 0; transform: translate(-200px,-45%) rotate(-28deg) scale(.8); }
     }
-    @keyframes unlockBar {
-      0% { transform: scaleY(1); filter: drop-shadow(0 0 10px rgba(0,0,0,0.8)); }
-      50% { transform: scaleY(1.03) scaleX(0.95); }
-      100% { transform: scaleY(0.92); opacity: 0.9; }
+    @keyframes nutLoose1 {
+      0% { opacity: 0; transform: translateX(70vw) rotate(420deg) scale(1.3); }
+      18% { opacity: 1; transform: translateX(-50%) rotate(0) scale(1); }
+      42% { transform: translateX(-50%) rotate(-90deg) scale(1.05); }
+      62% { transform: translateX(-50%) rotate(-240deg) scale(1.08); }
+      78% { opacity: 1; transform: translate(18px,-18px) rotate(-540deg) scale(1); }
+      100% { opacity: 0; transform: translate(44px,-120px) rotate(-720deg) scale(.75); }
     }
-
-    /* LED Status indicator (Red -> Green switch at 3.3s) */
-    .status-led {
-      box-shadow: 0 0 12px #ef4444;
-      animation: ledStatus 4s forwards;
+    @keyframes nutLoose2 {
+      0% { opacity: 0; transform: translateX(70vw) rotate(420deg) scale(1.3); }
+      18% { opacity: 1; transform: translateX(-50%) rotate(0) scale(1); }
+      42% { transform: translateX(-50%) rotate(-90deg) scale(1.05); }
+      62% { transform: translateX(-50%) rotate(-240deg) scale(1.08); }
+      78% { opacity: 1; transform: translate(18px,0) rotate(-540deg) scale(1); }
+      100% { opacity: 0; transform: translate(44px,120px) rotate(-720deg) scale(.75); }
     }
-    @keyframes ledStatus {
-      0%, 75% {
-        background-color: #ef4444;
-        box-shadow: 0 0 15px #ef4444, inset 0 0 4px #fee2e2;
-      }
-      80%, 100% {
-        background-color: #10b981;
-        box-shadow: 0 0 20px #10b981, inset 0 0 6px #d1fae5;
-      }
+    @keyframes nutLoose3 {
+      0% { opacity: 0; transform: translateX(70vw) rotate(420deg) scale(1.3); }
+      18% { opacity: 1; transform: translateX(-50%) rotate(0) scale(1); }
+      42% { transform: translateX(-50%) rotate(-90deg) scale(1.05); }
+      62% { transform: translateX(-50%) rotate(-240deg) scale(1.08); }
+      78% { opacity: 1; transform: translate(18px,18px) rotate(-540deg) scale(1); }
+      100% { opacity: 0; transform: translate(44px,200px) rotate(-720deg) scale(.75); }
     }
-
-    /* Sound notification badge */
-    .audio-badge {
-      backdrop-filter: blur(10px);
-      background: rgba(17, 24, 39, 0.85);
+    @media(max-width:700px){
+      .center-lock-bar{width:74px;height:min(52vh,340px)}
+      .gate-wrench{width:160px;height:90px;right:-30%}
+      .gate-nut{width:18px;height:18px}
     }
   </style>
 </head>
 <body class="bg-slate-950 text-gray-100 min-h-screen">
 
-  <!-- 
-    ====================================================================
-    1. STEEL GATE INTRO OVERLAY (Ye 5 Second Baad Auto-Khulta Hai)
-    ====================================================================
-  -->
   <div id="gate-overlay" class="gate-animating">
-    
-    <!-- LEFT STEEL DOOR -->
-    <div class="door-left w-1/2 h-full steel-panel border-r border-slate-900 flex flex-col justify-between p-6 z-10">
-      <!-- Top Rivets Bar -->
-      <div class="w-full h-8 rivet-border border-b border-black/60 rounded"></div>
-      
-      <!-- Left Door Reinforced Industrial Structure -->
-      <div class="space-y-12 px-4">
-        <div class="steel-beam h-14 w-full rounded flex items-center justify-between px-6 border-t border-slate-400/20">
-          <span class="font-mono text-xs tracking-widest text-slate-400 uppercase font-bold">SEC-ALPHA-01</span>
-          <div class="flex space-x-2">
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-          </div>
-        </div>
-        
-        <!-- Diagonal Heavy Metal Bracing -->
-        <div class="h-56 border-2 border-dashed border-slate-600/40 rounded-lg flex items-center justify-center relative overflow-hidden bg-black/20">
-          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent transform -skew-x-12"></div>
-          <div class="text-center font-['Orbitron'] opacity-30 select-none">
-            <p class="text-4xl font-black tracking-widest text-slate-300">RESTRICTED</p>
-            <p class="text-xs tracking-[0.4em] text-slate-400 mt-2">HIGH SECURITY ENTRANCE</p>
-          </div>
-        </div>
-
-        <div class="steel-beam h-14 w-full rounded flex items-center justify-between px-6 border-t border-slate-400/20">
-          <span class="font-mono text-xs tracking-widest text-slate-400 uppercase font-bold">HYDRAULIC-LOCK</span>
-          <div class="flex space-x-2">
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Bottom Rivets Bar -->
-      <div class="w-full h-8 rivet-border border-t border-black/60 rounded"></div>
+    <div class="door-left"></div>
+    <div class="door-right"></div>
+    <div class="center-lock-bar" aria-hidden="true">
+      <span class="gate-nut gate-nut-1"></span>
+      <span class="gate-nut gate-nut-2"></span>
+      <span class="gate-nut gate-nut-3"></span>
     </div>
-
-    <!-- RIGHT STEEL DOOR -->
-    <div class="door-right w-1/2 h-full steel-panel border-l border-slate-900 flex flex-col justify-between p-6 z-10">
-      <!-- Top Rivets Bar -->
-      <div class="w-full h-8 rivet-border border-b border-black/60 rounded"></div>
-      
-      <!-- Right Door Reinforced Structure -->
-      <div class="space-y-12 px-4">
-        <div class="steel-beam h-14 w-full rounded flex items-center justify-between px-6 border-t border-slate-400/20">
-          <div class="flex space-x-2">
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-          </div>
-          <span class="font-mono text-xs tracking-widest text-slate-400 uppercase font-bold">SYS-PRESSURE: 4200 PSI</span>
-        </div>
-        
-        <!-- Diagonal Heavy Metal Bracing (Right) -->
-        <div class="h-56 border-2 border-dashed border-slate-600/40 rounded-lg flex items-center justify-center relative overflow-hidden bg-black/20">
-          <div class="absolute inset-0 bg-gradient-to-l from-transparent via-white/[0.03] to-transparent transform skew-x-12"></div>
-          <div class="text-center font-['Orbitron'] opacity-30 select-none">
-            <p class="text-4xl font-black tracking-widest text-slate-300">AUTHORIZED</p>
-            <p class="text-xs tracking-[0.4em] text-slate-400 mt-2">PERSONNEL ONLY</p>
-          </div>
-        </div>
-
-        <div class="steel-beam h-14 w-full rounded flex items-center justify-between px-6 border-t border-slate-400/20">
-          <div class="flex space-x-2">
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-            <span class="w-3 h-3 rounded-full bg-slate-700 border border-slate-900"></span>
-          </div>
-          <span class="font-mono text-xs tracking-widest text-slate-400 uppercase font-bold">TRIPLE-BOLT LOCK</span>
-        </div>
-      </div>
-
-      <!-- Bottom Rivets Bar -->
-      <div class="w-full h-8 rivet-border border-t border-black/60 rounded"></div>
-    </div>
-
-    <!-- 
-      CENTER VERTICAL LOCKING PLATE & 3 NUTS
-      Ye dono pardo ke theek beech mein mount hai
-    -->
-    <div class="absolute inset-0 pointer-events-none flex items-center justify-center z-30">
-      
-      <!-- Central Lock Bracket -->
-      <div class="center-lock-bar relative w-28 md:w-36 h-[540px] bg-gradient-to-r from-[#20252b] via-[#4d5661] to-[#1a1e22] rounded-xl border-2 border-slate-500/50 shadow-[0_0_60px_rgba(0,0,0,0.9)] flex flex-col items-center justify-between py-8">
-        
-        <!-- Top Status Indicator & Screws -->
-        <div class="flex flex-col items-center gap-2">
-          <div class="flex items-center gap-2">
-            <div class="status-led w-4 h-4 rounded-full bg-red-500 transition-all duration-300"></div>
-            <span id="lock-status-text" class="font-mono text-[10px] tracking-wider text-red-400 font-bold">LOCKED</span>
-          </div>
-          <span class="text-[9px] font-mono text-slate-400 tracking-widest uppercase">TRIPLE SECURE</span>
-        </div>
-
-        <!-- 3 Nut Mounting Sockets with Thread Rings -->
-        <div class="w-full flex flex-col items-center justify-around h-[380px] my-auto">
-          
-          <!-- SOCKET 1 & NUT 1 -->
-          <div class="relative w-20 h-20 flex items-center justify-center">
-            <!-- Background Socket Thread Hole -->
-            <div class="absolute w-14 h-14 rounded-full bg-black/90 border-2 border-dashed border-slate-600/80 shadow-inner flex items-center justify-center">
-              <div class="w-8 h-8 rounded-full bg-slate-950 border border-slate-800"></div>
-            </div>
-            
-            <!-- SVG NUT 1 (Animates from right) -->
-            <div class="nut-item-1 absolute z-20 cursor-pointer drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)]">
-              <svg width="68" height="68" viewBox="0 0 100 100" class="filter drop-shadow-lg">
-                <!-- Hexagon Nut Outer Body -->
-                <polygon points="50,5 90,26 90,74 50,95 10,74 10,26" fill="url(#steelGrad1)" stroke="#8da0af" stroke-width="3"/>
-                <!-- Bevel highlights -->
-                <polygon points="50,11 84,29 84,71 50,89 16,71 16,29" fill="url(#steelGrad2)" opacity="0.9"/>
-                <!-- Center Threaded Hole -->
-                <circle cx="50" cy="50" r="22" fill="#13171b" stroke="#718291" stroke-width="3"/>
-                <circle cx="50" cy="50" r="17" fill="#090b0d" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,2"/>
-                <circle cx="50" cy="50" r="10" fill="#000000"/>
-              </svg>
-            </div>
-          </div>
-
-          <!-- SOCKET 2 & NUT 2 -->
-          <div class="relative w-20 h-20 flex items-center justify-center">
-            <div class="absolute w-14 h-14 rounded-full bg-black/90 border-2 border-dashed border-slate-600/80 shadow-inner flex items-center justify-center">
-              <div class="w-8 h-8 rounded-full bg-slate-950 border border-slate-800"></div>
-            </div>
-
-            <!-- SVG NUT 2 (Animates from right) -->
-            <div class="nut-item-2 absolute z-20 cursor-pointer drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)]">
-              <svg width="68" height="68" viewBox="0 0 100 100" class="filter drop-shadow-lg">
-                <polygon points="50,5 90,26 90,74 50,95 10,74 10,26" fill="url(#steelGrad1)" stroke="#8da0af" stroke-width="3"/>
-                <polygon points="50,11 84,29 84,71 50,89 16,71 16,29" fill="url(#steelGrad2)" opacity="0.9"/>
-                <circle cx="50" cy="50" r="22" fill="#13171b" stroke="#718291" stroke-width="3"/>
-                <circle cx="50" cy="50" r="17" fill="#090b0d" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,2"/>
-                <circle cx="50" cy="50" r="10" fill="#000000"/>
-              </svg>
-            </div>
-          </div>
-
-          <!-- SOCKET 3 & NUT 3 -->
-          <div class="relative w-20 h-20 flex items-center justify-center">
-            <div class="absolute w-14 h-14 rounded-full bg-black/90 border-2 border-dashed border-slate-600/80 shadow-inner flex items-center justify-center">
-              <div class="w-8 h-8 rounded-full bg-slate-950 border border-slate-800"></div>
-            </div>
-
-            <!-- SVG NUT 3 (Animates from right) -->
-            <div class="nut-item-3 absolute z-20 cursor-pointer drop-shadow-[0_10px_15px_rgba(0,0,0,0.8)]">
-              <svg width="68" height="68" viewBox="0 0 100 100" class="filter drop-shadow-lg">
-                <polygon points="50,5 90,26 90,74 50,95 10,74 10,26" fill="url(#steelGrad1)" stroke="#8da0af" stroke-width="3"/>
-                <polygon points="50,11 84,29 84,71 50,89 16,71 16,29" fill="url(#steelGrad2)" opacity="0.9"/>
-                <circle cx="50" cy="50" r="22" fill="#13171b" stroke="#718291" stroke-width="3"/>
-                <circle cx="50" cy="50" r="17" fill="#090b0d" stroke="#4b5563" stroke-width="2" stroke-dasharray="4,2"/>
-                <circle cx="50" cy="50" r="10" fill="#000000"/>
-              </svg>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Bottom Warning Label -->
-        <div class="text-center font-mono text-[9px] text-amber-500 font-semibold px-2">
-          ⚠ AUTO-DISENGAGE
-        </div>
-      </div>
-    </div>
-
-    <!-- Reusable SVG Gradients for realistic metallic nuts -->
-    <svg width="0" height="0" class="absolute">
-      <defs>
-        <linearGradient id="steelGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#a6b4c0" />
-          <stop offset="30%" stop-color="#647280" />
-          <stop offset="60%" stop-color="#3c4650" />
-          <stop offset="100%" stop-color="#8a99a6" />
-        </linearGradient>
-        <linearGradient id="steelGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stop-color="#d1dce5" />
-          <stop offset="45%" stop-color="#55626f" />
-          <stop offset="75%" stop-color="#2a323a" />
-          <stop offset="100%" stop-color="#93a3b0" />
-        </linearGradient>
-      </defs>
-    </svg>
-
-    <!-- Top floating audio and skip control button on overlay -->
-    <div class="absolute top-6 right-6 z-40 flex items-center gap-3">
-      <button id="toggle-sound-btn" class="audio-badge text-xs px-3.5 py-2 rounded-full border border-slate-700/80 text-slate-300 hover:text-white hover:border-slate-500 transition-all flex items-center gap-2 pointer-events-auto shadow-lg">
-        <span id="sound-icon">🔊</span>
-        <span id="sound-status-label">Sound FX: ON</span>
-      </button>
-      <button id="skip-intro-btn" class="audio-badge text-xs px-3.5 py-2 rounded-full border border-slate-700/80 text-amber-400 hover:text-amber-300 hover:border-amber-500 transition-all pointer-events-auto shadow-lg">
-        Skip Intro ⏩
-      </button>
-    </div>
-
-    <!-- Countdown Timer badge in top-left -->
-    <div class="absolute top-6 left-6 z-40 audio-badge px-3.5 py-2 rounded-full border border-slate-800 text-slate-400 font-mono text-xs flex items-center gap-2 shadow-lg">
-      <span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
-      <span>Unlocking: <strong id="countdown-text" class="text-white">5.0s</strong></span>
+    <div class="gate-wrench" aria-hidden="true">
+      <svg viewBox="0 0 260 140" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wrenchSteel" x1="0%" x2="100%" y1="0%" y2="0%">
+            <stop offset="0%" stop-color="#dfe9f1"/>
+            <stop offset="25%" stop-color="#98a6af"/>
+            <stop offset="50%" stop-color="#4c5760"/>
+            <stop offset="100%" stop-color="#d8e1e8"/>
+          </linearGradient>
+        </defs>
+        <path d="M20 58 L44 58 L88 24 L172 24 C198 24 216 42 216 68 C216 94 198 112 172 112 L80 112 L56 90 L20 90 Z" fill="url(#wrenchSteel)"/>
+        <path d="M88 24 L98 14 L130 14 L120 24 Z" fill="#c8d0d8"/>
+        <path d="M70 108 L120 108 L138 132 L90 132 Z" fill="#4b5560"/>
+        <path d="M146 16 L160 22 L170 46 L154 52 L146 16 Z" fill="#dfe9f1"/>
+        <path d="M170 46 L212 52 L234 72 L188 78 L170 46 Z" fill="#afb8bf"/>
+        <path d="M218 78 L246 78 L258 94 L234 96 Z" fill="#dfe9f1"/>
+        <path d="M57 73 L78 93" stroke="#6b7280" stroke-width="8" stroke-linecap="round"/>
+        <circle cx="70" cy="80" r="15" fill="#2a2f35" stroke="#d5dfe8" stroke-width="4"/>
+        <circle cx="70" cy="80" r="5" fill="#dfe9f1"/>
+      </svg>
     </div>
   </div>
 
-  <!-- 
-    ====================================================================
-    2. MAIN WEBSITE HOMEPAGE (Gate Khulne Ke Baad Ye Page Samne Aata Hai)
-    ====================================================================
-  -->
+  <script>
+    document.body.classList.add('gate-intro-active');
+    const gateOverlay = document.getElementById('gate-overlay');
+    const finishGateIntro = () => {
+      gateOverlay.classList.add('finished');
+      document.body.classList.remove('gate-intro-active');
+    };
+    window.setTimeout(finishGateIntro, 4200);
+  </script>
+
   <div id="main-content" class="min-h-screen flex flex-col">
-    <!-- Navbar -->
     <header class="border-b border-slate-800/80 bg-slate-900/50 backdrop-blur-md sticky top-0 z-20">
       <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div class="flex items-center gap-3">
@@ -465,60 +230,19 @@
             TITAN PORTAL
           </span>
         </div>
-        
-        <nav class="hidden md:flex items-center gap-8 text-sm text-slate-400 font-medium">
-          <a href="#features" class="hover:text-cyan-400 transition-colors">Features</a>
-          <a href="#about" class="hover:text-cyan-400 transition-colors">Security</a>
-          <a href="#pricing" class="hover:text-cyan-400 transition-colors">Specifications</a>
-        </nav>
-
-        <div class="flex items-center gap-3">
-          <button id="replay-btn" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold px-4 py-2 rounded-lg text-xs md:text-sm tracking-wide transition-all shadow-md shadow-cyan-500/25 flex items-center gap-2">
-            <span>🔄</span> Replay Gate Intro
-          </button>
-        </div>
       </div>
     </header>
 
-    <!-- Hero Section -->
     <main class="flex-1 flex flex-col justify-center items-center text-center px-6 py-20 relative overflow-hidden">
-      <!-- Glow ambient background -->
-      <div class="absolute w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none -top-20 -left-20"></div>
-      <div class="absolute w-[450px] h-[450px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none -bottom-20 -right-20"></div>
-
       <div class="max-w-4xl mx-auto space-y-6 relative z-10">
-        <!-- Status Pill -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-          ACCESS GRANTED • STEEL GATE DISENGAGED
-        </div>
-
         <h1 class="font-['Orbitron'] text-4xl sm:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight">
           Welcome to <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Your Modern</span> Platform
         </h1>
-
-        <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-          5-Second steel gate animation kamyabi se execute ho chuki hai! Teeno nuts unscrew ho kar release huay aur gate smooth tareeqe se slide open ho gaya.
-        </p>
-
-        <!-- Action Buttons -->
-        <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-          <button onclick="triggerReplay()" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-cyan-500/25 flex items-center gap-2">
-            <span>▶</span> Test Gate Animation Again
-          </button>
-          <a href="#features" class="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700 text-slate-200 font-semibold text-sm transition-all">
-            Explore Features
-          </a>
-        </div>
       </div>
-
-      <!-- Feature Cards Grid -->
-      <section id="features" class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-20 text-left w-full">
-        <!-- Card 1 -->
-        <div class="bg-slate-900/60 border border-slate-800/80 p-6 rounded-2xl backdrop-blur-sm hover:border-slate-700 transition-all group">
-          <div class="w-12 h-12 rounded-xl bg-cyan-950/70 border border-cyan-800/50 flex items-center justify-center text-cyan-400 text-xl mb-4 group-hover:scale-110 transition-transform">
-            ⚡
-          </div>
+    </main>
+  </div>
+</body>
+</html>
           <h3 class="font-['Orbitron'] font-bold text-lg text-white mb-2">5s Exact Timing</h3>
           <p class="text-sm text-slate-400 leading-relaxed">
             Teeno bolts right side se swing hote hain, vibration ke sath unscrew hote hain, aur theek 5 second par homepage unlock ho jata hai.
