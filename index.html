@@ -53,13 +53,12 @@
     .navlinks{width:100%;gap:10px;justify-content:space-between;align-items:center;}
     .navlinks ul{display:flex;flex:1;flex-wrap:wrap;gap:6px 12px;font-size:12px;}
     .navlinks .btn{flex:0 0 auto;padding:10px 12px;font-size:13px;white-space:nowrap;}
-    .stack{height:300px;transform:scale(.82);transform-origin:top center;margin-bottom:-52px;}
   }
 
   /* HERO */
   .hero{padding:72px 0 40px;background-color:#0A1426;background-image:linear-gradient(90deg,rgba(10,20,38,.86) 0%,rgba(10,20,38,.68) 52%,rgba(10,20,38,.3) 100%),url('mainpage.jpg.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;color:#fff;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;}
-  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;}}
+  .hero-grid{display:grid;grid-template-columns:1fr;align-items:center;}
+  .hero-grid>div:first-child{max-width:700px;}
   .eyebrow-plain{color:#F4C35E;font-weight:700;font-size:15px;margin-bottom:14px;}
   .hero h1{font-size:clamp(34px,5vw,54px);font-weight:800;line-height:1.08;margin:0 0 20px;letter-spacing:-.02em;}
   .hero p{font-size:18px;color:#F1F4FA;max-width:46ch;margin:0 0 30px;}
@@ -68,16 +67,6 @@
   .trustline{margin-top:34px;display:flex;gap:22px;color:#F1F4FA;font-size:14px;flex-wrap:wrap;}
   .trustline b{color:#fff;font-family:'Manrope',sans-serif;font-size:20px;display:block;}
   @media(max-width:760px){.hero{padding:52px 0 36px;background-image:linear-gradient(180deg,rgba(10,20,38,.8) 0%,rgba(10,20,38,.74) 58%,rgba(10,20,38,.48) 100%),url('mainpage.jpg.jpg');background-position:center,center 38%;}}
-
-  /* 3D stack visual */
-  .stack{position:relative;height:380px;perspective:1200px;}
-  .card3d{position:absolute;width:230px;border-radius:20px;background:var(--panel);border:1px solid var(--line);box-shadow:var(--shadow-hi);padding:20px;transform-style:preserve-3d;}
-  .c1{top:10px;left:10px;transform:rotate3d(1,-1,0,10deg) rotate(-6deg);z-index:3;}
-  .c2{top:90px;left:120px;transform:rotate3d(1,-1,0,10deg) rotate(4deg);z-index:2;background:linear-gradient(160deg,#EAF2FF,#fff);}
-  .c3{top:190px;left:30px;transform:rotate3d(1,-1,0,10deg) rotate(-3deg);z-index:1;background:linear-gradient(160deg,#FFF4E2,#fff);}
-  .card3d .tag{font-size:12px;color:var(--ink-soft);font-weight:600;margin-bottom:6px;}
-  .card3d .big{font-family:'Manrope',sans-serif;font-weight:800;font-size:22px;}
-  .card3d .ok{color:var(--mint);font-weight:700;font-size:13px;}
 
   /* SERVICES */
   section{padding:64px 0;}
@@ -165,23 +154,6 @@
       </div>
       <div class="trustline">
         <div><b>4.7★</b>average rating</div>
-      </div>
-    </div>
-    <div class="stack">
-      <div class="card3d c1">
-        <div class="tag">Booking #4471</div>
-        <div class="big">AC Repair</div>
-        <div class="ok">Technician on the way</div>
-      </div>
-      <div class="card3d c2">
-        <div class="tag">Your electrician</div>
-        <div class="big">Bilal K.</div>
-        <div class="ok">★ 4.9 · 340 jobs</div>
-      </div>
-      <div class="card3d c3">
-        <div class="tag">Fixed price</div>
-        <div class="big">Rs. 850</div>
-        <div class="ok">No surprises at the door</div>
       </div>
     </div>
   </div>
