@@ -28,11 +28,18 @@
   .job-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end;position:relative;z-index:1;}.add-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#fff!important;border-radius:9px;padding:8px 13px;font:700 13px Manrope,sans-serif;text-decoration:none!important;box-shadow:0 4px 0 -1px var(--blue-deep),0 8px 12px -8px rgba(47,111,237,.55);transition:transform .2s ease,box-shadow .2s ease;}.add-btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 -1px var(--blue-deep),0 12px 16px -8px rgba(47,111,237,.55);}.add-btn:active{transform:translateY(1px);box-shadow:0 2px 0 -1px var(--blue-deep);}
   .trust{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;}.trust ul{margin:0;padding:0;list-style:none;display:grid;gap:12px;color:var(--ink-soft);}.trust li::before{content:'✓';color:var(--mint);font-weight:800;margin-right:10px;}.cta{background:linear-gradient(150deg,var(--blue),var(--blue-deep));border-radius:22px;padding:36px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}.cta h2{margin:0 0 6px;font-size:26px;}.cta p{margin:0;color:#DCE7FF;}
   footer{border-top:1px solid var(--line);padding:32px 0;color:var(--ink-soft);font-size:14px;margin-top:28px;}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .hero.photo-hero{position:relative;isolation:isolate;overflow:hidden;background-color:#0A1426;background-image:none!important;}
+  .hero.photo-hero::before{content:'';position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .6s ease;background-image:linear-gradient(90deg,rgba(10,20,38,.88) 0%,rgba(10,20,38,.62) 52%,rgba(10,20,38,.25) 100%),var(--hero-image);background-size:100% 100%,cover;background-position:center,center;background-repeat:no-repeat;}
+  .hero.photo-hero.image-ready::before{opacity:1;}
+  .hero.photo-hero .wrap{position:relative;z-index:1;}
+  @media(prefers-reduced-motion:reduce){.hero.photo-hero::before{transition:none;}}
   @media(max-width:760px){.wrap{padding:0 16px;}.nav{padding:12px 16px;}.navlinks{gap:10px;}.navlinks ul{gap:10px;font-size:12px;}.navlinks .btn{padding:10px 12px;font-size:12px;}.hero{padding-top:48px;}.hero-grid,.trust-grid{grid-template-columns:1fr;}.stats{gap:8px;}.stat{padding:12px;}.stat strong{font-size:18px;}.jobs{grid-template-columns:1fr;}.job{padding:16px;}}
+  @media(max-width:760px){.hero.photo-hero::before{background-size:100% 100%,cover;background-position:center,center;}}
+  @media(max-width:760px){.hero.painter-hero::before,.hero.geyser-hero::before{background-size:100% 100%,100% auto;background-position:center,center top;}}
 </style>
 </head>
 <body>
-<header><div class="nav wrap"><a class="logo" href="index.html"><img src="logo.png" alt="The Fix Crew logo" onerror="this.style.display='none'; this.parentElement.style.fontWeight='800'; this.parentElement.innerHTML = '<span style=\'font-size:20px; white-space:nowrap;\'>The Fix Crew</span>';" /></a><div class="navlinks"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">All Services</a></li></ul><a class="btn btn-primary" href="book-appointment.html">Book a Fixer</a></div></div></header>
+<header><div class="nav wrap"><a class="logo" href="index.html"><img src="Logo.jpg.jpeg" alt="The Fix Crew logo" /></a><div class="navlinks"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">All Services</a></li></ul><a class="btn btn-primary" href="book-appointment.html">Book a Fixer</a></div></div></header>
 <main id="app"></main>
 <footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha</span></div></footer>
 <script>
@@ -55,6 +62,15 @@ if (photoAssets[key]) {
   preload.as = 'image';
   preload.href = photoAssets[key];
   document.head.appendChild(preload);
+  const heroImage = new Image();
+  heroImage.onload = () => {
+    const hero = document.querySelector('.photo-hero');
+    if (hero) {
+      hero.style.setProperty('--hero-image', `url("${photoAssets[key]}")`);
+      hero.classList.add('image-ready');
+    }
+  };
+  heroImage.src = photoAssets[key];
 }
 document.title = service.eyebrow + ' | The Fix Crew';
 document.getElementById('app').innerHTML = `

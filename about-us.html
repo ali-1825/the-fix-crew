@@ -16,7 +16,8 @@
   .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
   header{position:sticky;top:0;z-index:10;background:rgba(245,248,252,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
-  .logo{font-weight:800;font-size:20px;text-decoration:none;}
+  .logo{font-weight:800;font-size:20px;text-decoration:none;display:flex;align-items:center;}
+  .logo img{display:block;height:42px;width:auto;max-width:220px;object-fit:contain;}
   .navlinks{display:flex;align-items:center;gap:24px;font-size:14px;color:var(--ink-soft);}
   .navlinks a{text-decoration:none;}
   .navlinks a:hover{color:var(--ink);}
@@ -43,7 +44,7 @@
 <body>
 <header>
   <div class="nav wrap">
-    <a class="logo" href="index.html">THE FIX CREW</a>
+    <a class="logo" href="index.html"><img src="Logo.jpg.jpeg" alt="The Fix Crew logo"></a>
     <nav class="navlinks" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
