@@ -26,7 +26,7 @@ const params=new URLSearchParams(location.search);const service=params.get('serv
 document.getElementById('booking-form').addEventListener('submit',event=>{event.preventDefault();const form=new FormData(event.currentTarget);if(!event.currentTarget.checkValidity()){document.getElementById('error').style.display='block';return;}document.getElementById('error').style.display='none';const message=['New The Fix Crew booking request','',`Service: ${form.get('service')}`,`Work option: ${form.get('job')}`,`Name: ${form.get('name')}`,`Phone: ${form.get('phone')}`,`Address: ${form.get('address')}`,`Preferred date: ${form.get('date')}`,`Additional details: ${form.get('notes')||'None'}`].join('\n');document.getElementById('success').style.display='block';window.open(`https://wa.me/923000000000?text=${encodeURIComponent(message)}`,'_blank');});
 </script>
 <script>
-const serviceOptions=['Electrician','Plumber','AC Services','Carpenter & Handyman','Home Appliances Repair','Geyser Services','Painter Services'];
+const serviceOptions=['Electrician','Plumber','AC Services','Carpenter & Handyman','Home Appliances Repair','Home Cleaning Services','Geyser Services','Painter Services'];
 const serviceSelect=document.createElement('select');
 serviceSelect.id='service';serviceSelect.name='service';serviceSelect.required=true;
 serviceOptions.forEach(option=>{const item=document.createElement('option');item.value=option;item.textContent=option;serviceSelect.appendChild(item);});
@@ -37,11 +37,12 @@ const workOptions={
   'AC Services':['AC General Service','AC Installation','AC Repairing','AC Mounting & Dismounting','AC Dismounting'],
   'Carpenter & Handyman':['Room Door Lock Installation','Furniture, Wardrobe & Drawer Repair','Door Installation & Repair','Curtain Rod, Art, Mirror & Shelf Hanging','Drawer Lock & Catcher Replacement'],
   'Home Appliances Repair':['Automatic Washing Machine Repair','Washing Machine Installation/Service','Cooking Range & Oven Services','Kitchen Hood Installation & Repair'],
+  'Home Cleaning Services':['Routine Home Cleaning','Deep Home Cleaning','Kitchen Cleaning','Bathroom Cleaning','Move-In / Move-Out Cleaning'],
   'Geyser Services':['Gas Geyser Installation, Service & Repair','Instant Geyser Installation & Repair','Instant Geyser Dismounting'],
   'Painter Services':['House Paint','Gray Structure Paint','Furniture, Table & Door Polishing','Window & Wooden Door Paint']
 };
 const requestedJob=service;const matchingCategory=Object.entries(workOptions).find(([,jobs])=>jobs.includes(requestedJob));
-serviceSelect.value=matchingCategory?matchingCategory[0]:(serviceOptions.includes(service)?service:serviceOptions[0]);
+serviceSelect.value=matchingCategory?matchingCategory[0]:(serviceOptions.find(option=>option.toLowerCase()===service.toLowerCase())||serviceOptions[0]);
 const workField=document.createElement('div');workField.className='field full';
 const workLabel=document.createElement('label');workLabel.htmlFor='job';workLabel.textContent='What work do you need?';
 const workSelect=document.createElement('select');workSelect.id='job';workSelect.name='job';workSelect.required=true;
