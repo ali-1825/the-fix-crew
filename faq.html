@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQs | The Fix Crew</title>
+<meta name="description" content="Answers to common questions about booking, service areas, pricing, warranties, and payments at The Fix Crew.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#F5F8FC;--panel:#FFF;--ink:#132043;--ink-soft:#5C6B8A;--blue:#2F6FED;--blue-deep:#1E4FC7;--line:#E3E9F5;box-sizing:border-box;}
+  *,*::before,*::after{box-sizing:inherit;}
+  html{scroll-behavior:smooth;scroll-padding-top:80px;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,sans-serif;line-height:1.6;}
+  h1,h2,.logo{font-family:Manrope,sans-serif;}
+  a{color:inherit;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+  header{position:sticky;top:0;z-index:10;background:rgba(245,248,252,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:12px 24px;gap:20px;}
+  .logo img{display:block;height:38px;width:auto;max-width:220px;object-fit:contain;}
+  .navlinks{display:flex;align-items:center;gap:22px;font-size:14px;color:var(--ink-soft);}
+  .navlinks a{text-decoration:none;white-space:nowrap;}
+  .navlinks a:hover,.navlinks a[aria-current="page"]{color:var(--blue-deep);}
+  .navlinks .book-link{background:var(--blue);color:#fff;padding:9px 14px;border-radius:8px;font-weight:700;}
+  main{padding:64px 0 84px;}
+  .page-intro{max-width:780px;margin:0 auto 34px;text-align:center;}
+  .eyebrow{margin:0 0 10px;color:var(--blue-deep);font-size:13px;font-weight:800;}
+  h1{margin:0 0 12px;font-size:clamp(34px,5vw,48px);line-height:1.12;}
+  .page-intro p{margin:0;color:var(--ink-soft);font-size:16px;}
+  .faq-list{max-width:880px;margin:0 auto;border-top:1px solid var(--line);}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-item summary{display:flex;align-items:flex-start;gap:16px;padding:21px 4px;cursor:pointer;list-style:none;font-family:Manrope,sans-serif;font-size:16px;font-weight:700;line-height:1.5;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-number{flex:0 0 32px;color:var(--blue);font-size:14px;font-weight:800;padding-top:2px;}
+  .faq-question{flex:1;}
+  .faq-toggle{flex:0 0 24px;color:var(--blue-deep);font-family:Inter,sans-serif;font-size:23px;font-weight:400;line-height:1.2;text-align:center;}
+  .faq-item[open] .faq-toggle{transform:rotate(45deg);}
+  .faq-answer{padding:0 44px 22px 52px;color:var(--ink-soft);font-size:15px;}
+  .faq-answer p{margin:0 0 12px;}
+  .faq-answer p:last-child{margin-bottom:0;}
+  .faq-answer ul{margin:0;padding-left:20px;}
+  .faq-answer li+li{margin-top:7px;}
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--ink-soft);font-size:14px;}
+  .foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  @media(max-width:760px){.wrap{padding:0 16px;}.nav{align-items:flex-start;flex-direction:column;gap:12px;padding:12px 16px;}.navlinks{width:100%;flex-wrap:wrap;gap:10px 18px;font-size:13px;}main{padding:48px 0 64px;}.page-intro{text-align:left;margin-bottom:22px;}.faq-item summary{gap:10px;padding:18px 0;font-size:15px;}.faq-number{flex-basis:28px;}.faq-answer{padding:0 32px 20px 38px;font-size:14px;}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}.faq-toggle{transition:none;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav wrap">
+    <a class="logo" href="index.html" aria-label="The Fix Crew home"><img src="Logo.jpg.jpeg" alt="The Fix Crew logo"></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="services.html">All Services</a>
+      <a href="faq.html" aria-current="page">FAQs</a>
+      <a class="book-link" href="book-appointment.html">Book a Fixer</a>
+    </nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">THE FIX CREW</p>
+    <h1>Frequently asked questions</h1>
+    <p>Find answers about bookings, service visits, coverage, and the care we provide.</p>
+  </div>
+  <section class="faq-list" aria-label="Frequently asked questions">
+    <details class="faq-item">
+      <summary><span class="faq-number">01</span><span class="faq-question">How can I schedule an appointment with a professional technician from The Fix Crew?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer">
+        <p>To book our professional services, you have three convenient options:</p>
+        <ul>
+          <li><strong>Online Booking:</strong> Submit a quick service request directly through our website booking form.</li>
+          <li><strong>WhatsApp:</strong> Send us a message on our official WhatsApp number with your required service and location.</li>
+          <li><strong>Direct Call:</strong> Call our helpline directly to speak with a representative and lock in an immediate time slot.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">02</span><span class="faq-question">What sets The Fix Crew apart as a trusted home maintenance provider?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer">
+        <p>The Fix Crew is committed to eliminating the hassle of unvetted local handymen. We distinguish ourselves through:</p>
+        <ul>
+          <li>Rigorously background-checked, skilled, and polite technicians.</li>
+          <li>Punctual arrival within guaranteed time windows.</li>
+          <li>Upfront, honest pricing with zero hidden charges.</li>
+          <li>Dedicated customer support and post-service follow-up.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">03</span><span class="faq-question">What are the inspection and visit charges?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>We charge a nominal inspection fee of <strong>Rs. 300 to Rs. 500</strong> for on-site fault assessment and diagnosis. If you approve the estimate and proceed with the repair work with our technician, this inspection fee is adjusted directly into your final service bill.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">04</span><span class="faq-question">What are your service booking timings?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>Our service technicians and customer support desk operate from <strong>9:00 AM to 9:00 PM</strong>, 7 days a week (including Saturdays and Sundays). Emergency repair requests are prioritized for swift dispatch.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">05</span><span class="faq-question">In which areas can I avail The Fix Crew services?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>Our services are currently active across all key residential and commercial sectors in Sargodha, including <strong>Satellite Town, Cantt, University Road, Fatima Jinnah Colony, PAF Base vicinity, and surrounding areas</strong>. We are actively expanding to neighboring cities soon.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">06</span><span class="faq-question">Can I cancel or reschedule my booking?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>Yes. You have complete flexibility to reschedule or cancel your service booking free of charge at any stage before the technician has departed for your premises.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">07</span><span class="faq-question">How do I register a complaint or request a rework?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>Customer satisfaction is our utmost priority. If you encounter any issue or are dissatisfied with a completed job, you can register a complaint via our website contact form, direct WhatsApp message, or helpline call. Our support team will review the case and arrange a priority follow-up.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">08</span><span class="faq-question">Does The Fix Crew offer any warranty or service guarantee?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>Yes. We back our labor with a <strong>7-Day Check Warranty</strong>. If the exact same issue resurfaces within 7 days of the completed service, our technician will revisit and resolve the fault without any extra labor inspection fee.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">09</span><span class="faq-question">Who is responsible for purchasing spare parts or replacement materials?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer">
+        <p>Material and spare parts costs are separate from labor charges:</p>
+        <ul>
+          <li>You are welcome to supply your own parts if you prefer.</li>
+          <li>Alternatively, our technician can purchase genuine, high-quality replacement parts from authorized hardware suppliers on your behalf, accompanied by an authentic store receipt.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">10</span><span class="faq-question">Are your technicians safe and verified to enter my home?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer"><p>Safety and integrity are non-negotiable. Every technician operating under The Fix Crew undergoes thorough identity verification (CNIC verification), practical technical vetting, and customer etiquette training before being dispatched to your doorstep.</p></div>
+    </details>
+    <details class="faq-item">
+      <summary><span class="faq-number">11</span><span class="faq-question">What payment methods do you accept?</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+      <div class="faq-answer">
+        <p>Once the service is completed to your total satisfaction, you can pay via:</p>
+        <ul>
+          <li>Cash on Delivery (COD)</li>
+          <li>JazzCash</li>
+          <li>EasyPaisa</li>
+          <li>Direct Online Bank Transfer</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+</main>
+<footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha</span></div></footer>
+</body>
+</html>
