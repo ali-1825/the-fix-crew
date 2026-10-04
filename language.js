@@ -414,14 +414,18 @@ const urduTranslations = {
 const languageStyle = document.createElement('style');
 languageStyle.textContent = `
   .language-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid #d6deec;border-radius:10px;background:#fff;white-space:nowrap;flex-shrink:0}
-  .language-switch button{border:0;border-radius:7px;background:transparent;color:#43516b;padding:6px 9px;font:600 13px Inter,Arial,sans-serif;cursor:pointer}
+  .language-switch button{min-height:36px;border:0;border-radius:7px;background:transparent;color:#43516b;padding:6px 10px;font:600 13px Inter,Arial,sans-serif;cursor:pointer}
   .language-switch button[aria-pressed="true"]{background:#2f6fed;color:#fff}
   .language-switch button:focus-visible{outline:3px solid rgba(47,111,237,.35);outline-offset:2px}
+  header .navlinks a{text-decoration:none}
   html[dir="rtl"] body{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;line-height:2}
   html[dir="rtl"] input,html[dir="rtl"] textarea,html[dir="rtl"] select{text-align:right}
   html[dir="rtl"] a[href^="tel:"]{direction:ltr;unicode-bidi:isolate}
   html[dir="rtl"] .language-switch{direction:ltr}
-  @media(max-width:760px){.language-switch button{padding:6px 7px}header .navlinks .language-switch{grid-column:1/-1;grid-row:4;justify-self:end}}
+  @media(max-width:760px){
+    .language-switch button{min-height:40px;padding:7px 12px}
+    header .navlinks .language-switch{grid-column:1/-1;grid-row:4;justify-self:end;flex-basis:100%;width:max-content;margin-inline-start:auto}
+  }
 `;
 document.head.appendChild(languageStyle);
 
