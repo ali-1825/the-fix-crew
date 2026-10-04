@@ -19,11 +19,15 @@ if (imageFiles.length === 0) {
 } else {
   Promise.all(imageFiles.map(file => {
     const outputName = path.parse(file).name + '.webp';
-    return sharp(path.join(inputFolder, file))
-      .resize({ width: 1200, withoutEnlargement: true })
-      .webp({ quality: 80 })
-      .toFile(path.join(outputFolder, outputName))
-      .then(() => console.log(`Done: ${outputName}`));
+    const inputPath = path.join(inputFolder, file);
+    return sharp(inputPath).metadata().then(({ width, height }) => {
+      const maxWidth = width === height ? 240 : height > width ? 800 : 1440;
+      return sharp(inputPath)
+        .resize({ width: maxWidth, withoutEnlargement: true })
+        .webp({ quality: 74, effort: 6 })
+        .toFile(path.join(outputFolder, outputName))
+        .then(() => console.log(`Done: ${outputName}`));
+    });
   })).catch(error => {
     console.error('Image optimization failed:', error);
     process.exitCode = 1;
