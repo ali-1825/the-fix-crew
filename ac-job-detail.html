@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AC Service Details | The Fix Crew</title>
+<link rel="stylesheet" href="social-links.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -24,7 +25,7 @@
 <body>
 <header><div class="nav wrap"><a class="logo" href="index.html"><img src="optimized/Logo.jpg.webp" alt="The Fix Crew logo" /></a><div class="navlinks"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">All Services</a></li><li><a href="service-detail.html?service=ac">AC Services</a></li></ul><a class="btn btn-primary" href="book-appointment.html">Book a Fixer</a><a class="btn btn-whatsapp" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp The Fix Crew at 0309 7862739">WhatsApp</a></div></div></header>
 <main id="app"></main>
-<footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha · <a href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer">WhatsApp: 0309 7862739</a> · <a href="https://www.instagram.com/thefixcrew.official/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="https://www.facebook.com/profile.php?id=61594676083529" target="_blank" rel="noopener noreferrer">Facebook</a></span></div></footer>
+<footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha</span></div></footer>
 <script>
 const jobs = {
   installation:{title:'AC Installation',intro:'Book AC installation with The Fix Crew. Get a clear scope and verified professionals.',price:'Call for quote',includes:['Mounting of indoor unit','Mounting of outdoor unit','AC pipe installation within 10 feet'],excludes:['AC pipe installation more than 10 feet','Any type of repair','Any type of material','Any type of gas','Ladder','Underground and ceiling piping']},
@@ -37,5 +38,6 @@ document.title=job.title+' | The Fix Crew';
 document.getElementById('app').innerHTML=`<section class="hero"><div class="wrap"><div class="eyebrow">AC SERVICES</div><h1>${job.title}</h1><p>${job.intro}</p><span class="price">${job.price}</span><div class="hero-actions" style="margin-top:24px;"><a class="btn btn-primary" href="book-appointment.html?service=${encodeURIComponent(job.title)}">Book This Service</a><a class="btn btn-ghost" href="#scope">View service scope</a></div></div></section><section id="scope"><div class="wrap"><div class="columns"><article class="panel"><h2>Includes</h2><ul class="included">${job.includes.map(item=>`<li>${item}</li>`).join('')}</ul></article><article class="panel"><h2>Does not include</h2><ul class="excluded">${job.excludes.map(item=>`<li>${item}</li>`).join('')}</ul></article></div><p class="note">The listed scope covers the services above. Any additional work or material will be discussed separately.</p><div class="cta"><div><h2>Ready to book?</h2><p>Message The Fix Crew about your service and technician availability.</p></div><a class="btn btn-white" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer">WhatsApp The Fix Crew</a></div></div></section>`;
 </script>
 <script>document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('a[href="about-us.html"]')){const link=document.createElement('a');link.href='about-us.html';link.textContent='About Us';nav.insertBefore(link,nav.lastElementChild);}});</script>
+<script src="social-links.js" defer></script>
 </body>
 </html>
