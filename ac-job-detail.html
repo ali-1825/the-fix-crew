@@ -25,7 +25,7 @@
 <body>
 <header><div class="nav wrap"><a class="logo" href="index.html"><img src="optimized/Logo.jpg.webp" alt="The Fix Crew logo" /></a><div class="navlinks"><ul><li><a href="index.html">Home</a></li><li><a href="services.html">All Services</a></li><li><a href="service-detail.html?service=ac">AC Services</a></li></ul><a class="btn btn-primary" href="book-appointment.html">Book a Fixer</a><a class="btn btn-whatsapp" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp The Fix Crew at 0309 7862739">WhatsApp</a></div></div></header>
 <main id="app"></main>
-<footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha</span></div></footer>
+<footer><div class="wrap foot"><span>© 2026 The Fix Crew. All rights reserved.</span><span>Sargodha</span><span>Call: <a href="tel:+923097862739">0309 7862739</a></span></div></footer>
 <script>
 const jobs = {
   installation:{title:'AC Installation',intro:'Book AC installation with The Fix Crew. Get a clear scope and verified professionals.',price:'Call for quote',includes:['Mounting of indoor unit','Mounting of outdoor unit','AC pipe installation within 10 feet'],excludes:['AC pipe installation more than 10 feet','Any type of repair','Any type of material','Any type of gas','Ladder','Underground and ceiling piping']},
@@ -39,5 +39,6 @@ document.getElementById('app').innerHTML=`<section class="hero"><div class="wrap
 </script>
 <script>document.querySelectorAll('.navlinks').forEach(nav=>{if(!nav.querySelector('a[href="about-us.html"]')){const link=document.createElement('a');link.href='about-us.html';link.textContent='About Us';nav.insertBefore(link,nav.lastElementChild);}});</script>
 <script src="social-links.js" defer></script>
+<script src="language.js" defer></script>
 </body>
 </html>
