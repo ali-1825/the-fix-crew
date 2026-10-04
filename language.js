@@ -10,6 +10,8 @@ const urduTranslations = {
   'WhatsApp The Fix Crew': 'دی فکس کریو کو واٹس ایپ کریں',
   'How it works': 'طریقۂ کار',
   'Language selection': 'زبان منتخب کریں',
+  'Open navigation menu': 'نیویگیشن مینو کھولیں',
+  'Close navigation menu': 'نیویگیشن مینو بند کریں',
   'WhatsApp The Fix Crew at 0309 7862739': '0309 7862739 پر دی فکس کریو کو واٹس ایپ کریں',
   'Social media and contact': 'سوشل میڈیا اور رابطہ',
   'Sargodha': 'سرگودھا',
@@ -418,13 +420,31 @@ languageStyle.textContent = `
   .language-switch button[aria-pressed="true"]{background:#2f6fed;color:#fff}
   .language-switch button:focus-visible{outline:3px solid rgba(47,111,237,.35);outline-offset:2px}
   header .navlinks a{text-decoration:none}
+  .header-tools{display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .mobile-menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #d6deec;border-radius:10px;background:#fff;color:#132043;cursor:pointer}
+  .mobile-menu-toggle span,.mobile-menu-toggle span::before,.mobile-menu-toggle span::after{display:block;width:19px;height:2px;border-radius:2px;background:currentColor;content:"";transition:transform .18s ease}
+  .mobile-menu-toggle span{position:relative}
+  .mobile-menu-toggle span::before,.mobile-menu-toggle span::after{position:absolute;left:0}
+  .mobile-menu-toggle span::before{top:-6px}
+  .mobile-menu-toggle span::after{top:6px}
+  .mobile-menu-toggle[aria-expanded="true"] span{background:transparent}
+  .mobile-menu-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+  .mobile-menu-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
   html[dir="rtl"] body{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;line-height:2}
   html[dir="rtl"] input,html[dir="rtl"] textarea,html[dir="rtl"] select{text-align:right}
   html[dir="rtl"] a[href^="tel:"]{direction:ltr;unicode-bidi:isolate}
   html[dir="rtl"] .language-switch{direction:ltr}
   @media(max-width:760px){
-    .language-switch button{min-height:40px;padding:7px 12px}
-    header .navlinks .language-switch{grid-column:1/-1;grid-row:4;justify-self:end;flex-basis:100%;width:max-content;margin-inline-start:auto}
+    header .nav{position:relative;display:flex!important;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
+    .header-tools{gap:8px}
+    .language-switch button{min-height:40px;padding:7px 10px}
+    .mobile-menu-toggle{display:inline-flex}
+    header .navlinks,header .navlinks[style]{display:none!important;position:absolute;top:calc(100% - 1px);left:16px;right:16px;z-index:20;flex-direction:column;align-items:stretch;gap:8px;width:auto;max-height:calc(100vh - 100px);overflow-y:auto;padding:14px;background:#fff;border:1px solid #e3e9f5;border-radius:14px;box-shadow:0 16px 30px -18px rgba(19,32,67,.4)}
+    header .navlinks.is-open,header .navlinks.is-open[style]{display:flex!important}
+    header .navlinks ul{display:flex;flex-direction:column;align-items:stretch;gap:4px;width:100%;margin:0;padding:0}
+    header .navlinks ul li{width:100%}
+    header .navlinks a{display:flex;align-items:center;min-height:42px;width:100%;padding:9px 12px;border-radius:8px}
+    header .navlinks .btn{min-height:44px;width:100%;margin:0}
   }
 `;
 document.head.appendChild(languageStyle);
@@ -452,7 +472,47 @@ switcher.append(englishButton, urduButton);
 
 const navLinks = document.querySelector('header .navlinks');
 if (navLinks) {
-  navLinks.appendChild(switcher);
+  navLinks.id = 'mobile-site-navigation';
+  const headerTools = document.createElement('div');
+  headerTools.className = 'header-tools';
+  const menuButton = document.createElement('button');
+  menuButton.className = 'mobile-menu-toggle';
+  menuButton.type = 'button';
+  menuButton.setAttribute('aria-controls', navLinks.id);
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.setAttribute('aria-label', 'Open navigation menu');
+  menuButton.innerHTML = '<span aria-hidden="true"></span>';
+  headerTools.append(menuButton, switcher);
+  navLinks.parentElement.appendChild(headerTools);
+
+  function setMenuLabel(isOpen) {
+    const label = isOpen ? 'Close navigation menu' : 'Open navigation menu';
+    menuButton.setAttribute('aria-label', document.documentElement.lang === 'ur'
+      ? urduTranslations[label]
+      : label);
+  }
+
+  function closeMenu() {
+    navLinks.classList.remove('is-open');
+    menuButton.setAttribute('aria-expanded', 'false');
+    setMenuLabel(false);
+  }
+
+  menuButton.addEventListener('click', () => {
+    const isOpen = menuButton.getAttribute('aria-expanded') !== 'true';
+    navLinks.classList.toggle('is-open', isOpen);
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+    setMenuLabel(isOpen);
+  });
+  navLinks.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
+  });
+  document.addEventListener('click', (event) => {
+    if (!navLinks.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeMenu();
+  });
 }
 
 function rememberAttribute(element, name) {
