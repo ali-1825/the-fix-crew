@@ -35,7 +35,9 @@ if (questionForm) {
       statusMessage.textContent = 'Thanks! Your question has been sent. We will reply to your email.';
       statusMessage.dataset.state = 'success';
     } catch (error) {
-      statusMessage.textContent = 'Sorry, your question could not be sent right now. Please try again later or contact us on WhatsApp.';
+      statusMessage.textContent = error.message && /activation/i.test(error.message)
+        ? 'The question form needs email activation. Open the FormSubmit activation email sent to The Fix Crew and click its activation link. Until then, please contact us on WhatsApp.'
+        : 'Sorry, your question could not be sent right now. Please try again later or contact us on WhatsApp.';
       statusMessage.dataset.state = 'error';
       console.error('Question form submission failed:', error);
     } finally {
