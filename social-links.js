@@ -12,6 +12,12 @@ const socialLinks = [
     icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.4 21v-8.2h2.75l.41-3.2H13.4V7.56c0-.93.26-1.56 1.59-1.56h1.69V3.14A22.5 22.5 0 0 0 14.22 3c-2.43 0-4.1 1.49-4.1 4.23V9.6H7.36v3.2h2.76V21h3.28Z"/></svg>'
   },
   {
+    className: 'social-tiktok',
+    label: 'TikTok',
+    href: 'https://www.tiktok.com/@thefixcrew.official',
+    icon: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.5V2h-4.02v13.67a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6.05.88.14V8.8a7.05 7.05 0 1 0 6.04 6.97V9.12a8.8 8.8 0 0 0 5.14 1.65V6.75a4.8 4.8 0 0 1-1.37-.06Z"/></svg>'
+  },
+  {
     className: 'social-whatsapp',
     label: 'WhatsApp The Fix Crew at 0309 7862739',
     href: 'https://wa.me/923097862739',
