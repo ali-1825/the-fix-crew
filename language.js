@@ -431,10 +431,14 @@ languageStyle.textContent = `
   .mobile-menu-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
   .mobile-menu-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
   html[dir="rtl"] body{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;line-height:2}
+  html[dir="rtl"] .hero-panel{color:var(--ink,#132043)}
   html[dir="rtl"] input,html[dir="rtl"] textarea,html[dir="rtl"] select{text-align:right}
   html[dir="rtl"] a[href^="tel:"]{direction:ltr;unicode-bidi:isolate}
   html[dir="rtl"] .language-switch{direction:ltr}
   @media(max-width:760px){
+    html[dir="rtl"] .jobs .job{flex-direction:column;align-items:stretch;gap:10px}
+    html[dir="rtl"] .jobs .job>div:first-child{width:100%;min-width:0}
+    html[dir="rtl"] .jobs .job-actions{width:100%;justify-content:space-between}
     header .nav{position:relative;display:flex!important;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
     .header-tools{gap:8px}
     .language-switch button{min-height:40px;padding:7px 10px}
