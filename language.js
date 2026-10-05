@@ -430,7 +430,11 @@ languageStyle.textContent = `
   .mobile-menu-toggle[aria-expanded="true"] span{background:transparent}
   .mobile-menu-toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
   .mobile-menu-toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
-  html[dir="rtl"] body{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;line-height:2}
+  html[dir="rtl"] body{font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;line-height:2.5}
+  html[dir="rtl"] :is(h1,h2,h3,h4,h5,h6){font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif;line-height:1.9;letter-spacing:normal;word-spacing:.12em}
+  html[dir="rtl"] :is(p,li,dt,dd,label,summary,button,a,th,td){line-height:2.5;letter-spacing:normal;word-spacing:.12em}
+  html[dir="rtl"] :is(button,input,textarea,select){font-family:"Noto Nastaliq Urdu","Noto Naskh Arabic",serif}
+  html[dir="rtl"] .section-head{text-align:right}
   html[dir="rtl"] .hero-panel{color:var(--ink,#132043)}
   html[dir="rtl"] input,html[dir="rtl"] textarea,html[dir="rtl"] select{text-align:right}
   html[dir="rtl"] a[href^="tel:"]{direction:ltr;unicode-bidi:isolate}
