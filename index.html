@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Fix Crew — Home Services, Sorted</title>
+<title>دی فکس کرُو — گھر کی خدمات، آسان</title>
 <link rel="stylesheet" href="social-links.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="image" href="optimized/mainpage.jpg.webp" media="(min-width: 761px)" fetchpriority="high">
 <link rel="preload" as="image" href="optimized/homepage%20phone.jpg.webp" media="(max-width: 760px)" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="optimized/Logo%20with%20tag%20line.webp">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#F5F8FC;
@@ -32,6 +33,10 @@
   *,*::before,*::after{box-sizing:inherit;}
   html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.55;}
   h1,h2,h3,.logo{font-family:'Manrope',sans-serif;}
+  body{font-family:'Noto Nastaliq Urdu',serif;line-height:2;}
+  h1,h2,h3,h4,.eyebrow-plain,.btn,.trustline,.navlinks,.step .n{font-family:'Noto Nastaliq Urdu',serif;letter-spacing:normal;}
+  .hero h1{line-height:1.8;}
+  .section-head{text-align:right;}
   img{max-width:100%;}
   .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
   a{color:inherit;}
@@ -65,7 +70,7 @@
   }
 
   /* HERO */
-  .hero{min-height:min(53vw,760px);padding:64px 0 36px;background-color:#0A1426;background-image:linear-gradient(90deg,rgba(10,20,38,.86) 0%,rgba(10,20,38,.68) 52%,rgba(10,20,38,.3) 100%),url('optimized/mainpage.jpg.webp');background-size:cover,cover;background-position:center,center;background-repeat:no-repeat;color:#fff;}
+  .hero{min-height:min(53vw,760px);padding:64px 0 36px;background-color:#0A1426;background-image:linear-gradient(270deg,rgba(10,20,38,.86) 0%,rgba(10,20,38,.68) 52%,rgba(10,20,38,.3) 100%),url('optimized/mainpage.jpg.webp');background-size:cover,cover;background-position:center,center;background-repeat:no-repeat;color:#fff;}
   .hero-grid{display:grid;grid-template-columns:1fr;align-items:center;}
   .hero-grid>div:first-child{max-width:700px;}
   .eyebrow-plain{color:#F4C35E;font-weight:700;font-size:15px;margin-bottom:14px;}
@@ -75,7 +80,7 @@
   .btn-ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow-lo);}
   .trustline{margin-top:34px;display:flex;gap:22px;color:#F1F4FA;font-size:14px;flex-wrap:wrap;}
   .trustline b{color:#fff;font-family:'Manrope',sans-serif;font-size:20px;display:block;}
-  @media(max-width:760px){.hero{min-height:min(160vw,680px);padding:44px 0 32px;background-image:linear-gradient(180deg,rgba(10,20,38,.8) 0%,rgba(10,20,38,.74) 58%,rgba(10,20,38,.48) 100%),url('optimized/homepage%20phone.jpg.webp');background-size:cover,cover;background-position:center,center;}}
+  @media(max-width:760px){.hero{min-height:min(160vw,680px);padding:44px 0 32px;background-image:linear-gradient(180deg,rgba(10,20,38,.58) 0%,rgba(10,20,38,.48) 58%,rgba(10,20,38,.38) 100%),url('optimized/homepage%20phone.jpg.webp');background-size:cover,cover;background-position:center,center;}}
 
   /* SERVICES */
   section{padding:64px 0;}
@@ -108,12 +113,9 @@
 
   /* ABOUT */
   .about-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:start;}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:42px;align-items:start;}
   .about-copy h2{font-size:clamp(28px,3.4vw,38px);margin:0 0 14px;}
   .about-copy p{color:var(--ink-soft);font-size:16px;margin:0 0 16px;max-width:64ch;}
-  .about-points{display:grid;gap:14px;margin:0;padding:0;list-style:none;}
-  .about-points li{background:#F5F8FC;border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--ink-soft);}
-  .about-points strong{display:block;color:var(--ink);font-family:'Manrope',sans-serif;margin-bottom:3px;}
   @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:24px;}}
 
   /* PRICING */
@@ -140,27 +142,31 @@
 <iframe id="intro-animation" src="fixcrew-intro-animation.html" title="The Fix Crew intro animation" aria-hidden="true" tabindex="-1" style="position:fixed;inset:0;width:100%;height:100%;border:0;z-index:999;pointer-events:none;background:radial-gradient(ellipse at center,#24466f 0%,#12233a 100%);"></iframe>
 <script>
   const introAnimation = document.getElementById('intro-animation');
+  const removeIntroAnimation = () => introAnimation.remove();
+
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    introAnimation.remove();
+    removeIntroAnimation();
   } else {
+    const fallbackTimer = window.setTimeout(removeIntroAnimation, 3500);
     introAnimation.addEventListener('load', () => {
-      window.setTimeout(() => introAnimation.remove(), 2800);
+      window.clearTimeout(fallbackTimer);
+      window.setTimeout(removeIntroAnimation, 2800);
     }, { once: true });
   }
 </script>
 
 <header>
   <div class="nav wrap">
-    <div class="logo"><img src="Logo%20with%20tag%20line.png" alt="The Fix Crew logo" class="logo-img"></div>
+    <div class="logo"><img src="optimized/Logo%20with%20tag%20line.webp" alt="The Fix Crew logo" class="logo-img"></div>
     <div class="navlinks">
       <ul>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="#process">How it works</a></li>
-        <li><a href="faq.html">FAQs</a></li>
+      <li><a href="index.html">ہوم</a></li>
+      <li><a href="services.html">خدمات</a></li>
+      <li><a href="faq.html">سوالات</a></li>
+      <li><a href="about-us.html">ہمارے بارے میں</a></li>
       </ul>
-      <a class="btn btn-primary" href="book-appointment.html">Book a Fixer</a>
-      <a class="btn btn-whatsapp" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp The Fix Crew at 0309 7862739">WhatsApp</a>
+      <a class="btn btn-primary" href="book-appointment.html">کاریگر بُک کریں</a>
+      <a class="btn btn-whatsapp" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer" aria-label="واٹس ایپ پر دی فکس کرُو سے رابطہ کریں: 0309 7862739">واٹس ایپ</a>
     </div>
   </div>
 </header>
@@ -168,15 +174,15 @@
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow-plain">Sargodha</div>
-      <h1>One message connects you with skilled technicians ready to fix your home today.</h1>
-      <p>The Fix Crew sends verified, background-checked electricians, plumbers, AC techs and carpenters to your home — booked in under a minute.</p>
+      <div class="eyebrow-plain">سرگودھا اور گردونواح</div>
+      <h1>ایک پیغام بھیجیں، اور آج ہی اپنے گھر کے کام کے لیے ماہر کاریگر بلائیں۔</h1>
+      <p>ہم تصدیق شدہ الیکٹریشن، پلمبر، اے سی ٹیکنیشن اور بڑھئی آپ کے گھر بھیجتے ہیں۔ ایک منٹ سے بھی کم وقت میں بکنگ کریں۔</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="book-appointment.html">Book a Fixer Now</a>
-        <a class="btn btn-ghost" href="services.html">See all services</a>
+        <a class="btn btn-primary" href="book-appointment.html">ابھی کاریگر بُک کریں</a>
+        <a class="btn btn-ghost" href="services.html">تمام خدمات دیکھیں</a>
       </div>
       <div class="trustline">
-        <div><b>4.9★</b>average rating</div>
+        <div><b>4.9★</b>اوسط درجہ بندی</div>
       </div>
     </div>
   </div>
@@ -185,18 +191,18 @@
 <section id="services">
   <div class="wrap">
     <div class="section-head">
-      <h2>You Break We Fix.</h2>
-      <p>Pick a trade, describe the job, and we match you with the nearest available technician.</p>
+      <h2>آپ کا مسئلہ، ہمارا حل۔</h2>
+      <p>کام کی نوعیت منتخب کریں، مسئلہ بتائیں، اور ہم آپ کے قریب دستیاب ٹیکنیشن تلاش کریں گے۔</p>
     </div>
     <div class="services-grid">
-      <a class="svc-link" href="service-detail.html?service=electrician"><div class="svc"><div class="icon i-blue">⚡</div><h3>Electrician</h3><p>Wiring, switches, fans, UPS install &amp; repair.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=plumber"><div class="svc"><div class="icon i-blue">🔧</div><h3>Plumber</h3><p>Leak fixes, taps, geysers, drainage &amp; piping.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=ac"><div class="svc"><div class="icon i-amber">❄️</div><h3>AC Service</h3><p>Installation, general service, gas refill, repair.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=carpenter"><div class="svc"><div class="icon i-amber">🪚</div><h3>Carpenter</h3><p>Doors, locks, wardrobes, furniture repair.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=painter"><div class="svc"><div class="icon i-mint">🎨</div><h3>Painter</h3><p>Interior &amp; exterior paint, polish, touch-ups.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=appliances"><div class="svc"><div class="icon i-mint">🧰</div><h3>Appliance Repair</h3><p>Washing machines, ovens, kitchen hoods.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=cleaning"><div class="svc"><div class="icon i-mint">🧹</div><h3>Home Cleaning</h3><p>Routine, deep and move-in/move-out home cleaning.</p></div></a>
-      <a class="svc-link" href="service-detail.html?service=helper"><div class="svc"><div class="icon i-amber">🧰</div><h3>On-Demand Helper</h3><p>Furniture moving and extra hands for house shifting.</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=electrician"><div class="svc"><div class="icon i-blue">⚡</div><h3>الیکٹریشن</h3><p>وائرنگ، سوئچ، پنکھے، یو پی ایس کی تنصیب اور مرمت۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=plumber"><div class="svc"><div class="icon i-blue">🔧</div><h3>پلمبر</h3><p>رساؤ، نلکے، گیزر، نکاسی اور پائپوں کی مرمت۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=ac"><div class="svc"><div class="icon i-amber">❄️</div><h3>اے سی سروس</h3><p>تنصیب، عمومی سروس، گیس بھرائی اور مرمت۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=carpenter"><div class="svc"><div class="icon i-amber">🪚</div><h3>بڑھئی</h3><p>دروازے، تالے، الماریاں اور فرنیچر کی مرمت۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=painter"><div class="svc"><div class="icon i-mint">🎨</div><h3>رنگ و روغن</h3><p>اندرونی و بیرونی پینٹ، پالش اور رنگ کی مرمت۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=appliances"><div class="svc"><div class="icon i-mint">🧰</div><h3>گھریلو آلات کی مرمت</h3><p>واشنگ مشین، اوون اور کچن ہُڈ کی مرمت۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=cleaning"><div class="svc"><div class="icon i-mint">🧹</div><h3>گھر کی صفائی</h3><p>معمول کی صفائی، تفصیلی صفائی اور گھر منتقل ہونے سے پہلے یا بعد کی صفائی۔</p></div></a>
+      <a class="svc-link" href="service-detail.html?service=helper"><div class="svc"><div class="icon i-amber">🧰</div><h3>گھریلو مددگار</h3><p>فرنیچر اٹھانے اور گھر کی منتقلی کے لیے اضافی مدد۔</p></div></a>
     </div>
   </div>
 </section>
@@ -204,31 +210,26 @@
 <section id="about" class="about-band">
   <div class="wrap about-grid">
     <div class="about-copy">
-      <div class="eyebrow-plain">About Us</div>
-      <h2>Your trusted local fixing crew in Sargodha.</h2>
-      <p>Welcome to <strong>The Fix Crew</strong>, your trusted local partner right here in Sargodha for reliable, fast, and professional fixing and maintenance solutions.</p>
-      <p>We understand how stressful it can be when things break down or stop working properly. Our dedicated team of skilled professionals delivers reliable repairs, troubleshooting, and maintenance with expertise and efficiency, so the job gets done right the first time.</p>
-      <p>Our mission is simple: to make life easier for the people of Sargodha with hassle-free, transparent, and high-quality services you can depend on.</p>
+      <div class="eyebrow-plain">ہمارے بارے میں</div>
+      <h2>سرگودھا اور گردونواح میں آپ کے قابلِ اعتماد مقامی ماہرین۔</h2>
+      <p><strong>دی فکس کرُو</strong> میں خوش آمدید۔ سرگودھا اور گردونواح میں مرمت اور دیکھ بھال کے قابلِ اعتماد، تیز رفتار اور پیشہ ورانہ حل کے لیے ہم آپ کے مقامی ساتھی ہیں۔</p>
+      <p>ہم جانتے ہیں کہ گھر کی کوئی چیز خراب ہو جائے یا ٹھیک سے کام نہ کرے تو کتنی پریشانی ہوتی ہے۔ ہماری ماہر ٹیم مرمت، خرابی کی تشخیص اور دیکھ بھال توجہ اور مہارت سے کرتی ہے، تاکہ کام پہلی بار ہی درست ہو۔</p>
+      <p>ہمارا مقصد سادہ ہے: سرگودھا اور اس کے نواحی علاقے کے لوگوں کی زندگی آسان بنانا، ایسی معیاری، شفاف اور بےفکر سروسز کے ساتھ جن پر آپ بھروسا کر سکیں۔</p>
     </div>
-    <ul class="about-points">
-      <li><strong>Proudly Serving Sargodha</strong>Local experts ready to help you in your area.</li>
-      <li><strong>Reliable &amp; Skilled</strong>Dedicated professionals focused on top-quality work.</li>
-      <li><strong>Fast &amp; Efficient</strong>Quick response and turnaround times.</li>
-    </ul>
   </div>
 </section>
 
 <section id="process" class="process-band">
   <div class="wrap">
     <div class="section-head">
-      <h2>How a booking actually works.</h2>
-      <p>Four steps, usually under an hour from tap to fix.</p>
+      <h2>بکنگ کا طریقہ</h2>
+      <p>صرف چار مراحل — ہم آپ کی درخواست پر جلد از جلد کارروائی کریں گے۔</p>
     </div>
     <div class="steps">
-      <div class="step"><div class="n">1</div><h4>Tell us the problem</h4><p>Pick a service and describe the issue in one line.</p></div>
-      <div class="step"><div class="n">2</div><h4>Discuss the work</h4><p>Our team will go over the job and next steps with you.</p></div>
-      <div class="step"><div class="n">3</div><h4>Meet your technician</h4><p>Track arrival and see their rating before they knock.</p></div>
-      <div class="step"><div class="n">4</div><h4>Pay after it's fixed</h4><p>Cash or Online Transfer, only once the job is actually done.</p></div>
+      <div class="step"><div class="n">1</div><h4>مسئلہ بتائیں</h4><p>خدمت منتخب کریں اور ایک جملے میں مسئلہ بیان کریں۔</p></div>
+      <div class="step"><div class="n">2</div><h4>کام کی تفصیل طے کریں</h4><p>ہماری ٹیم آپ سے کام اور اگلے مراحل پر بات کرے گی۔</p></div>
+      <div class="step"><div class="n">3</div><h4>ٹیکنیشن سے رابطہ</h4><p>ہمارا ٹیکنیشن آپ سے رابطہ کرے گا۔</p></div>
+      <div class="step"><div class="n">4</div><h4>کام مکمل ہونے پر ادائیگی کریں</h4><p>ادائیگی صرف آن لائن قبول کی جاتی ہے؛ نقد ادائیگی نہیں لی جاتی۔</p></div>
     </div>
   </div>
 </section>
@@ -237,10 +238,10 @@
   <div class="wrap">
     <div class="cta">
       <div>
-        <h2>Something needs fixing today?</h2>
-        <p>Call now or book online — a technician can be at your door within the hour.</p>
+        <h2>کیا آج ہی کچھ ٹھیک کروانا ہے؟</h2>
+        <p>ابھی رابطہ کریں یا آن لائن بُک کریں — ہم ٹیکنیشن کو کم سے کم وقت میں آپ کے پاس بھیجنے کی کوشش کریں گے۔</p>
       </div>
-      <a class="btn btn-white" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer">WhatsApp The Fix Crew</a>
+      <a class="btn btn-white" href="https://wa.me/923097862739" target="_blank" rel="noopener noreferrer">واٹس ایپ پر رابطہ کریں</a>
     </div>
   </div>
 </section>
@@ -248,19 +249,19 @@
 <footer>
   <div class="wrap foot-grid">
     <div>
-      <div class="logo" style="margin-bottom:10px;"><img src="Logo%20with%20tag%20line.png" alt="The Fix Crew logo" class="logo-img" style="width:50px;height:50px;"></div>
-      <div>© 2026 The Fix Crew. All rights reserved.</div>
+      <div class="logo" style="margin-bottom:10px;"><img src="optimized/Logo%20with%20tag%20line.webp" alt="The Fix Crew logo" class="logo-img" style="width:50px;height:50px;"></div>
+      <div>© 2026 دی فکس کرُو۔ جملہ حقوق محفوظ ہیں۔</div>
     </div>
     <div class="foot-cities">
-      <span>Sargodha</span>
-      <span>Call: <a href="tel:+923097862739">0309 7862739</a></span>
+      <span>سرگودھا اور گردونواح</span>
+      <span>فون: <a href="tel:+923097862739">0309 7862739</a></span>
     </div>
   </div>
 </footer>
 
 <script>
   document.querySelectorAll('.logo').forEach((logo) => {
-    logo.innerHTML = '<img src="Logo%20with%20tag%20line.png" alt="The Fix Crew logo">';
+    logo.innerHTML = '<img src="optimized/Logo%20with%20tag%20line.webp" alt="The Fix Crew logo">';
   });
 </script>
 
