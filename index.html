@@ -39,9 +39,9 @@
   header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(245,248,252,.68);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--line);}
   .nav{display:flex;align-items:center;justify-content:space-between;padding:8px 24px;}
   .logo{font-weight:800;font-size:20px;display:flex;align-items:center;gap:8px;}
-  .logo img{display:block;height:32px;width:auto;max-width:200px;object-fit:contain;}
+  .logo img{display:block;height:56px;width:auto;max-width:200px;object-fit:contain;}
   .logo .mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(145deg,var(--blue),var(--blue-deep));box-shadow:var(--shadow-md), inset 0 1px 1px rgba(255,255,255,.4);transform:perspective(200px) rotateX(8deg) rotateY(-8deg);}
-  .logo-img{width:40px;height:40px;object-fit:contain;border-radius:8px;}
+  .logo-img{width:56px;height:56px;object-fit:contain;}
   .navlinks ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;font-weight:500;font-size:14px;color:var(--ink-soft);}
   .navlinks ul a:hover{color:var(--ink);}
   .navlinks{display:flex;align-items:center;gap:22px;}
@@ -56,7 +56,7 @@
   @media(max-width:760px){
     .nav{display:grid;grid-template-columns:1fr 1fr;padding:8px 16px;gap:6px 12px;}
     .logo{grid-column:1/-1;grid-row:1;width:auto;}
-    .logo img{height:30px;max-width:160px;}
+    .logo img{height:56px;max-width:160px;}
     .navlinks{display:contents;}
     .navlinks ul{grid-column:1/-1;grid-row:2;width:100%;justify-content:space-between;gap:4px 10px;font-size:12px;}
     .navlinks .btn{grid-row:3;padding:8px 10px;font-size:12px;white-space:nowrap;}
@@ -151,7 +151,7 @@
 
 <header>
   <div class="nav wrap">
-    <div class="logo"><img src="optimized/Logo.jpg.webp" alt="The Fix Crew logo" class="logo-img"> The Fix Crew</div>
+    <div class="logo"><img src="Logo%20with%20tag%20line.png" alt="The Fix Crew logo" class="logo-img"></div>
     <div class="navlinks">
       <ul>
         <li><a href="services.html">Services</a></li>
@@ -248,7 +248,7 @@
 <footer>
   <div class="wrap foot-grid">
     <div>
-      <div class="logo" style="margin-bottom:10px;"><img src="optimized/Logo.jpg.webp" alt="The Fix Crew logo" class="logo-img" style="width:34px;height:34px;"> The Fix Crew</div>
+      <div class="logo" style="margin-bottom:10px;"><img src="Logo%20with%20tag%20line.png" alt="The Fix Crew logo" class="logo-img" style="width:50px;height:50px;"></div>
       <div>© 2026 The Fix Crew. All rights reserved.</div>
     </div>
     <div class="foot-cities">
@@ -260,7 +260,7 @@
 
 <script>
   document.querySelectorAll('.logo').forEach((logo) => {
-    logo.innerHTML = '<img src="optimized/Logo.jpg.webp" alt="The Fix Crew logo">';
+    logo.innerHTML = '<img src="Logo%20with%20tag%20line.png" alt="The Fix Crew logo">';
   });
 </script>
 

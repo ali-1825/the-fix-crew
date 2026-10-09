@@ -421,6 +421,8 @@ languageStyle.textContent = `
   .language-switch button:focus-visible{outline:3px solid rgba(47,111,237,.35);outline-offset:2px}
   header .navlinks a{text-decoration:none}
   .header-tools{display:flex;align-items:center;gap:8px;flex-shrink:0}
+  .header-phone{color:#132043;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}
+  .header-phone:hover{text-decoration:underline}
   .mobile-menu-toggle{display:none;align-items:center;justify-content:center;width:44px;height:44px;padding:0;border:1px solid #d6deec;border-radius:10px;background:#fff;color:#132043;cursor:pointer}
   .mobile-menu-toggle span,.mobile-menu-toggle span::before,.mobile-menu-toggle span::after{display:block;width:19px;height:2px;border-radius:2px;background:currentColor;content:"";transition:transform .18s ease}
   .mobile-menu-toggle span{position:relative}
@@ -445,6 +447,7 @@ languageStyle.textContent = `
     html[dir="rtl"] .jobs .job-actions{width:100%;justify-content:space-between}
     header .nav{position:relative;display:flex!important;flex-direction:row;align-items:center;justify-content:space-between;gap:12px}
     .header-tools{gap:8px}
+    .header-tools{order:-1}
     .language-switch button{min-height:40px;padding:7px 10px}
     .mobile-menu-toggle{display:inline-flex}
     header .navlinks,header .navlinks[style]{display:none!important;position:absolute;top:calc(100% - 1px);left:16px;right:16px;z-index:20;flex-direction:column;align-items:stretch;gap:8px;width:auto;max-height:calc(100vh - 100px);overflow-y:auto;padding:14px;background:#fff;border:1px solid #e3e9f5;border-radius:14px;box-shadow:0 16px 30px -18px rgba(19,32,67,.4)}
@@ -490,7 +493,12 @@ if (navLinks) {
   menuButton.setAttribute('aria-expanded', 'false');
   menuButton.setAttribute('aria-label', 'Open navigation menu');
   menuButton.innerHTML = '<span aria-hidden="true"></span>';
-  headerTools.append(menuButton, switcher);
+  const phoneLink = document.createElement('a');
+  phoneLink.className = 'header-phone';
+  phoneLink.href = 'tel:+923097862739';
+  phoneLink.setAttribute('aria-label', 'Call The Fix Crew at 0309 7862739');
+  phoneLink.textContent = '0309 7862739';
+  headerTools.append(menuButton, switcher, phoneLink);
   navLinks.parentElement.appendChild(headerTools);
 
   function setMenuLabel(isOpen) {
